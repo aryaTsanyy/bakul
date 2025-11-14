@@ -1,29 +1,22 @@
-import React from "react";
-import StatsSection from "@/components/HomePage/StartStats/StatsSection";
-import CategorySection from "@/components/HomePage/Category/CategorySection";
-import TypographySection from "@/components/HomePage/Typography/TypographySection";
-import ListSection from "@/components/HomePage/ListUMKM/ListSection";
-import TestimonialSection from "@/components/HomePage/Testimonial/TestimonialSection";
-import MapSection from "@/components/HomePage/Maps/Mapsection";
-import HeroSection from "@/components/HomePage/Hero/HeroSection";
-import Navbar from "@/components/layout/navbar";
-import Footer from "@/components/layout/footer";
+import { Geist, Geist_Mono } from "next/font/google";
+import DirectorySection from "./Directory/DirectorySection";
 
-const Directory = () => {
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+export default function Directory() {
   return (
-    <main className="w-full h-full pt-24">
-      <Navbar />
-      <HeroSection />
-      {/* Category Section */}
-      <CategorySection />
-      <TypographySection />
-      <StatsSection />
-      <ListSection />
-      <TestimonialSection />
-      <MapSection />
-      <Footer />
-    </main>
+    <div
+      className={`${geistSans.className} ${geistMono.className} left-0 w-full h-full min-h-screen `}
+    >
+      <DirectorySection />
+    </div>
   );
-};
-
-export default Directory;
+}

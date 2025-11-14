@@ -28,7 +28,9 @@ const Navbar = () => {
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (searchQuery.trim()) {
-      router.push(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
+      router.push(
+        `/Directory?search=${encodeURIComponent(searchQuery.trim())}`
+      );
       setIsOpen(false);
       setSearchQuery("");
     }
@@ -42,20 +44,20 @@ const Navbar = () => {
   return (
     <>
       <nav className="bg-transparent w-full fixed top-0 left-0 z-50 font-geist-mono">
-        <div className="mx-auto py-3 px-10 md:py-5 md:px-6 lg:px-10">
-          <div className="flex items-center justify-between h-16 md:h-20">
+        <div className="mx-auto py-3 px-6 md:py-5 md:px-6 lg:px-10">
+          <div className="flex items-center justify-between h-14 md:h-20">
             {/* Logo */}
-            <div className="flex-shrink-0 flex items-center p-2 md:p-3 rounded-full bg-[#fefffb] cursor-pointer hover:scale-105 transition-transform duration-200">
+            <div className="flex-shrink-0 flex items-center p-2 md:p-3 rounded-full bg-[#fefffb] hover:scale-105 transition-transform duration-200">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="w-12 h-12 md:w-8 md:h-8"
+                className="w-8 h-8 md:w-12 md:h-12"
                 viewBox="0 0 32 32"
                 fill="none"
               >
                 <g clipPath="url(#clip0_1_847)">
                   <path
                     d="M24 22.4V9.6C24 8.71632 23.2837 8 22.4 8H22.3195C21.8952 8 21.4883 8.16872 21.1883 8.46872L8.46872 21.1883C8.16872 21.4883 8 21.8952 8 22.3195V32H0V22.3195C1.7225e-05 19.7734 1.01138 17.3316 2.81172 15.5313L15.5313 2.81172C17.3316 1.01138 19.7734 1.70984e-05 22.3195 0H22.4C27.7019 0 32 4.29806 32 9.6V22.4C32 27.7019 27.7019 32 22.4 32H11.2V24H22.4C23.2837 24 24 23.2837 24 22.4ZM0 0H13.6L5.6 8H0V0Z"
-                    fill="#13569C"
+                    fill="#2A9DF4"
                   />
                 </g>
                 <defs>
@@ -79,7 +81,7 @@ const Navbar = () => {
                 <div className="flex items-center gap-2 px-4 py-3 md:gap-3 md:px-5 md:py-3.5 lg:gap-4 lg:pl-6 lg:pr-2 whitespace-nowrap">
                   <button
                     onClick={() => handleNavigate("/")}
-                    className="relative cursor-pointer text-gray-700 font-medium text-xs md:text-sm lg:text-base transition-all duration-300 overflow-hidden group px-2 py-1 transform"
+                    className="relative text-gray-700 font-medium text-xs md:text-sm lg:text-base transition-all duration-300 overflow-hidden group px-2 py-1 transform"
                     style={{ perspective: "100px" }}
                   >
                     <span
@@ -89,15 +91,16 @@ const Navbar = () => {
                       BERANDA
                     </span>
                     <span
-                      className="absolute inset-0 flex items-center justify-center text-[#13569C] transition-transform duration-500 ease-out translate-y-full group-hover:translate-y-0"
+                      className="absolute inset-0 flex items-center justify-center text-[#2A9DF4] transition-transform duration-500 ease-out translate-y-full group-hover:translate-y-0"
                       style={{ transformStyle: "preserve-3d" }}
                     >
                       BERANDA
                     </span>
                   </button>
+
                   <button
-                    onClick={() => handleNavigate("/umkm")}
-                    className="relative cursor-pointer text-gray-700 font-medium text-xs md:text-sm lg:text-base transition-all duration-300 overflow-hidden group px-2 py-1 transform"
+                    onClick={() => handleNavigate("/Directory")}
+                    className="relative text-gray-700 font-medium text-xs md:text-sm lg:text-base transition-all duration-300 overflow-hidden group px-2 py-1 transform"
                     style={{ perspective: "100px" }}
                   >
                     <span
@@ -107,15 +110,15 @@ const Navbar = () => {
                       UMKM
                     </span>
                     <span
-                      className="absolute inset-0 flex items-center justify-center text-[#13569C] transition-transform duration-500 ease-out translate-y-full group-hover:translate-y-0"
+                      className="absolute inset-0 flex items-center justify-center text-[#2A9DF4] transition-transform duration-500 ease-out translate-y-full group-hover:translate-y-0"
                       style={{ transformStyle: "preserve-3d" }}
                     >
                       UMKM
                     </span>
                   </button>
                   <button
-                    onClick={() => handleNavigate("/peta")}
-                    className="relative cursor-pointer text-gray-700 font-medium text-xs md:text-sm lg:text-base transition-all duration-300 overflow-hidden group px-2 py-1 transform"
+                    onClick={() => handleNavigate("#maps")}
+                    className="relative text-gray-700 font-medium text-xs md:text-sm lg:text-base transition-all duration-300 overflow-hidden group px-2 py-1 transform"
                     style={{ perspective: "100px" }}
                   >
                     <span
@@ -125,7 +128,7 @@ const Navbar = () => {
                       PETA
                     </span>
                     <span
-                      className="absolute inset-0 flex items-center justify-center text-[#13569C] transition-transform duration-500 ease-out translate-y-full group-hover:translate-y-0"
+                      className="absolute inset-0 flex items-center justify-center text-[#2A9DF4] transition-transform duration-500 ease-out translate-y-full group-hover:translate-y-0"
                       style={{ transformStyle: "preserve-3d" }}
                     >
                       PETA
@@ -137,7 +140,7 @@ const Navbar = () => {
               {/* Menu Icon Button - Hamburger to X Animation */}
               <button
                 onClick={handleToggle}
-                className="bg-white cursor-pointer rounded-full p-3 md:p-3.5 lg:p-4 hover:scale-105 active:scale-95 transition-transform duration-200 flex-shrink-0"
+                className="bg-white rounded-full p-3 md:p-3.5 lg:p-4 hover:scale-105 hover:rotate-12 active:scale-95 transition-transform duration-200 flex-shrink-0"
                 aria-label="Toggle menu"
               >
                 <div className="w-5 h-4 md:w-6 md:h-5 relative flex flex-col justify-center items-center">
@@ -166,7 +169,7 @@ const Navbar = () => {
 
               {/* Search Section - Expandable */}
               <div
-                className={`bg-[#13569C] rounded-full shadow-lg flex items-center overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] ${
+                className={`bg-[#2A9DF4] rounded-full shadow-lg flex items-center overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] ${
                   isOpen ? "w-64 md:w-80 lg:w-96" : "w-auto"
                 }`}
               >
@@ -192,7 +195,7 @@ const Navbar = () => {
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
                       placeholder="Cari UMKM...."
-                      className="bg-transparent text-white placeholder-gray-400 focus:outline-none w-full text-sm md:text-base font-medium"
+                      className="bg-transparent text-white placeholder-gray-100 focus:outline-none w-full text-sm md:text-base font-medium"
                       autoFocus
                     />
                     <button
@@ -201,7 +204,7 @@ const Navbar = () => {
                         e.stopPropagation();
                         handleToggle();
                       }}
-                      className="text-gray-400 hover:text-white flex-shrink-0 p-1 hover:scale-110 active:scale-95 transition-transform"
+                      className="text-gray-100 hover:rotate-12 hover:text-white flex-shrink-0 p-1 hover:scale-110 active:scale-95 transition-transform"
                       aria-label="Close"
                     >
                       <svg
@@ -238,7 +241,7 @@ const Navbar = () => {
                 className="bg-white rounded-full p-5 shadow-lg hover:scale-105 active:scale-95 transition-transform duration-200"
                 aria-label="Toggle menu"
               >
-                <div className="w-6 h-5 relative flex flex-col justify-center items-center">
+                <div className="w-4 h-3 relative flex flex-col justify-center items-center">
                   <span
                     className={`absolute w-full h-0.5 bg-[#19395F] rounded-full transition-all duration-300 ease-in-out ${
                       isOpen ? "rotate-45 top-1/2 -translate-y-1/2" : "top-0"
@@ -277,13 +280,13 @@ const Navbar = () => {
                 BERANDA
               </button>
               <button
-                onClick={() => handleNavigate("/umkm")}
+                onClick={() => handleNavigate("/Directory")}
                 className="w-full text-left px-3 py-2.5 text-gray-700 hover:bg-gray-50 rounded-lg font-medium text-sm transition-colors duration-200 active:scale-95"
               >
                 UMKM
               </button>
               <button
-                onClick={() => handleNavigate("/peta")}
+                onClick={() => handleNavigate("#maps")}
                 className="w-full text-left px-3 py-2.5 text-gray-700 hover:bg-gray-50 rounded-lg font-medium text-sm transition-colors duration-200 active:scale-95"
               >
                 PETA

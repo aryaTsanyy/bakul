@@ -1,20 +1,35 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fefffb;
+  --background: white;
   --green: #b5ea33;
   --foreground: #171717;
   --blue-primmary: #13569c;
+  --blue-secondary: #2a9df4;
   --dark-text: #081f36;
   --darkblue-text: #19395f;
   --dark-text-secondary: #161d04;
 }
 
+* {
+  scroll-behavior: smooth;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-inter), system-ui, -apple-system, "Segoe UI", Roboto,
     "Helvetica Neue", Arial;
+  overflow-x: hidden;
+}
+section {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 .font-anton {
   font-family: var(--font-anton), sans-serif;
@@ -25,9 +40,11 @@ body {
 .font-inter {
   font-family: var(--font-inter), sans-serif;
 }
-
+.bg-secondary-blue {
+  background-color: var(--blue-secondary);
+}
 .primary-button {
-  background: var(--blue-primmary);
+  background: var(--blue-secondary);
   padding: 14px 32px;
 }
 .dark-text {
@@ -175,4 +192,138 @@ textarea {
   .map-tiles {
     filter: brightness(0.8) contrast(1.1) saturate(0.9);
   }
+}
+
+/* Dome Gallery */
+
+.sphere-root {
+  --radius: 520px;
+  --viewer-pad: 72px;
+  --circ: calc(var(--radius) * 3.14);
+  --rot-y: calc((360deg / var(--segments-x)) / 2);
+  --rot-x: calc((360deg / var(--segments-y)) / 2);
+  --item-width: calc(var(--circ) / var(--segments-x));
+  --item-height: calc(var(--circ) / var(--segments-y));
+}
+
+.sphere-root * {
+  box-sizing: border-box;
+}
+.sphere,
+.sphere-item,
+.item__image {
+  transform-style: preserve-3d;
+}
+
+.stage {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  perspective: calc(var(--radius) * 2);
+  perspective-origin: 50% 50%;
+}
+
+.sphere {
+  transform: translateZ(calc(var(--radius) * -1));
+  will-change: transform;
+  position: absolute;
+}
+
+.sphere-item {
+  width: calc(var(--item-width) * var(--item-size-x));
+  height: calc(var(--item-height) * var(--item-size-y));
+  position: absolute;
+  top: -999px;
+  bottom: -999px;
+  left: -999px;
+  right: -999px;
+  margin: auto;
+  transform-origin: 50% 50%;
+  backface-visibility: hidden;
+  transition: transform 300ms;
+  transform: rotateY(
+      calc(
+        var(--rot-y) * (var(--offset-x) + ((var(--item-size-x) - 1) / 2)) +
+          var(--rot-y-delta, 0deg)
+      )
+    )
+    rotateX(
+      calc(
+        var(--rot-x) * (var(--offset-y) - ((var(--item-size-y) - 1) / 2)) +
+          var(--rot-x-delta, 0deg)
+      )
+    )
+    translateZ(var(--radius));
+}
+
+.sphere-root[data-enlarging="true"] .scrim {
+  opacity: 1 !important;
+  pointer-events: all !important;
+}
+
+@media (max-width: 640px) {
+  .sphere-root {
+    --radius: 300px;
+    --viewer-pad: 16px;
+  }
+  .item__image {
+    inset: 6px !important;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+  .sphere-root {
+    --radius: 400px;
+    --viewer-pad: 24px;
+  }
+  .item__image {
+    inset: 8px !important;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .sphere-root {
+    --radius: 500px;
+    --viewer-pad: 48px;
+  }
+}
+
+@media (max-aspect-ratio: 1/1) {
+  .viewer-frame {
+    height: auto !important;
+    width: 100% !important;
+  }
+}
+
+body.dg-scroll-lock {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+  overflow: hidden !important;
+  touch-action: none !important;
+  overscroll-behavior: contain !important;
+}
+.item__image {
+  position: absolute;
+  inset: 10px;
+  border-radius: var(--tile-radius, 12px);
+  overflow: hidden;
+  cursor: pointer;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transition: transform 300ms;
+  pointer-events: auto;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+.item__image--reference {
+  position: absolute;
+  inset: 10px;
+  pointer-events: none;
 }

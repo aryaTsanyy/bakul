@@ -43,19 +43,19 @@ const DEFAULT_IMAGES: ImageItem[] = [
     alt: "Modern sculpture",
   },
   {
-    src: "/UMKM/UtomoHouse.jpeg",
+    src: "/UMKM/Utomo/UtomoHouse.jpeg",
     alt: "Digital artwork",
   },
   {
-    src: "/UMKM/owner1.png",
+    src: "/UMKM/Patawi/Patawi.png",
     alt: "Contemporary art",
   },
   {
-    src: "/UMKM/owner2.png",
+    src: "/UMKM/Suluk/Suluk.png",
     alt: "Geometric pattern",
   },
   {
-    src: "/UMKM/owner3.png",
+    src: "/UMKM/Link/Link.jpg",
     alt: "Textured surface",
   },
   {
@@ -151,7 +151,7 @@ function computeItemBaseRotation(
 
 export default function DomeGallery({
   images = DEFAULT_IMAGES,
-  fit = 0.5,
+  fit = 0.6,
   fitBasis = "auto",
   minRadius = 600,
   maxRadius = Infinity,
@@ -162,10 +162,10 @@ export default function DomeGallery({
   enlargeTransitionMs = DEFAULTS.enlargeTransitionMs,
   segments = DEFAULTS.segments,
   dragDampening = 2,
-  openedImageWidth = "400px",
-  openedImageHeight = "400px",
-  imageBorderRadius = "30px",
-  openedImageBorderRadius = "30px",
+  openedImageWidth = "400", //400
+  openedImageHeight = "400", //400
+  imageBorderRadius = "30px", //30
+  openedImageBorderRadius = "30px", //30
   grayscale = false,
 }: DomeGalleryProps) {
   const rootRef = useRef<HTMLDivElement>(null);
@@ -781,6 +781,45 @@ export default function DomeGallery({
       position: absolute;
     }
     
+    @media (max-width: 640px) {
+      .stage {
+        transform: scale(0.35);
+      }
+      .sphere-root {
+        --viewer-pad: 20px;
+        height: 40vh !important;
+        min-height: 200px;
+      }
+    }
+
+    @media (min-width: 641px) and (max-width: 1024px) {
+      .stage {
+        transform: scale(0.65);
+      }
+      .sphere-root {
+        --viewer-pad: 40px;
+        height: 40vh !important;
+        min-height: 500px;
+      }
+    }
+
+    @media (min-width: 1025px) and (max-width: 1440px) {
+      .stage {
+        transform: scale(0.85);
+      }
+      .sphere-root {
+        --viewer-pad: 60px;
+        height: 70vh !important;
+      }
+    }
+
+    @media (min-width: 1441px) {
+      .stage {
+        transform: scale(1);
+      }
+    }
+
+
     .sphere-item {
       width: calc(var(--item-width) * var(--item-size-x));
       height: calc(var(--item-height) * var(--item-size-y));
@@ -957,13 +996,13 @@ export default function DomeGallery({
           />
 
           <div
-            className="absolute left-0 right-0 top-0 h-[120px] z-[5] pointer-events-none rotate-180"
+            className="absolute left-0 right-0 top-0 h-[70px] z-[5] pointer-events-none rotate-180"
             style={{
               background: ``,
             }}
           />
           <div
-            className="absolute left-0 right-0 bottom-0 h-[120px] z-[5] pointer-events-none"
+            className="absolute left-0 right-0 bottom-0 h-[70px] z-[5] pointer-events-none"
             style={{
               background: ``,
             }}
@@ -978,7 +1017,7 @@ export default function DomeGallery({
               ref={scrimRef}
               className="scrim absolute inset-0 z-10 pointer-events-none opacity-0 transition-opacity duration-500"
               style={{
-                background: "rgba(0, 0, 0, 0.4)",
+                background: "transparent",
                 backdropFilter: "blur(3px)",
               }}
             />

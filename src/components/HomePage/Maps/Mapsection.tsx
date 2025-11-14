@@ -18,7 +18,10 @@ const MapSection = () => {
     categories: umkm.categories,
   }));
   return (
-    <div className="w-full h-ful min-h-screen px-20 py-32 flex flex-col gap-10">
+    <div
+      id="maps"
+      className="w-full h-ful min-h-screen px-20 py-32 flex flex-col gap-10"
+    >
       <div className="top-section flex flex-col items-start gap-5">
         <p className="font-geist-mono text-[#19395F] font-medium text-xl">
           [ PETA ]

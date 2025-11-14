@@ -19,7 +19,6 @@ const CategorySection = () => {
   const [showLeftGradient, setShowLeftGradient] = useState(false);
   const [showRightGradient, setShowRightGradient] = useState(true);
 
-  /* Mock data for categories */
   const categories: Category[] = useMemo(() => {
     const counts = new Map<string, number>();
     for (const u of umkmList) {
@@ -41,7 +40,7 @@ const CategorySection = () => {
     const getCategoryDesc = (title: string): string => {
       switch (title) {
         case "Makanan":
-          return "Nikmati cita rasa khas lokal dari berbagai pelaku usaha kuliner yang menawarkan hidangan autentik dan lezat";
+          return "Nikmati cita rasa khas lokal dari berbagai pelaku usaha kuliner lokal";
         case "Minuman":
           return "Temukan berbagai minuman kreatif dan inovatif dari para pengusaha lokal";
         case "Jasa":
@@ -55,13 +54,15 @@ const CategorySection = () => {
       }
     };
 
-    return Array.from(counts.entries()).map(([title, count], i) => ({
-      id: i + 1,
-      title,
-      categoryDescriptions: getCategoryDesc(title),
-      description: `${count} UMKM • Klik untuk lihat`,
-      icon: pickIcon(title),
-    }));
+    return Array.from(counts.entries())
+      .sort((a, b) => a[0].localeCompare(b[0]))
+      .map(([title, count], i) => ({
+        id: i + 1,
+        title,
+        categoryDescriptions: getCategoryDesc(title),
+        description: `${count} UMKM • Klik untuk lihat`,
+        icon: pickIcon(title),
+      }));
   }, []);
 
   /* Handle scroll */
@@ -118,7 +119,7 @@ const CategorySection = () => {
   }, []);
 
   return (
-    <div className="h-full w-full flex px-20 py-28">
+    <div className="h-full w-full flex flex-col items-center justify-center px-5 py-12 sm:px-8 sm:py-16 md:px-12 md:py-20 lg:px-20 lg:py-28">
       <style>{`
         @keyframes fadeInUp {
           from {
@@ -141,23 +142,23 @@ const CategorySection = () => {
 
       <div className="w-full h-full">
         {/* Header Section */}
-        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-12 gap-6">
+        <div className="flex flex-col mb-8 sm:mb-10 lg:mb-12 gap-6">
           <div className="flex-1">
-            <p className="text-sm darkblue-text mb-10 tracking-wider">
+            <p className="text-xs font-geist-mono sm:text-sm darkblue-text mb-6 sm:mb-8 lg:mb-10 tracking-wider">
               [ KATEGORI ]
             </p>
-            <div className="flex w-full items-start justify-between">
-              <div className="flex flex-col items-start gap-4.5 ">
-                <h1 className="text-3xl dark-text font-anton sm:text-4xl lg:text-5xl font-black mb-4 leading-tight">
+            <div className="flex flex-col lg:flex-row w-full items-start justify-between gap-6 lg:gap-8">
+              <div className="flex flex-col items-start gap-3 sm:gap-4 lg:gap-4.5 flex-1">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl dark-text font-anton font-black leading-tight">
                   SETIAP KATEGORI, PUNYA CERITA SENDIRI
                 </h1>
-                <p className="text-[#515151] font-inter text-base sm:text-lg max-w-2xl">
+                <p className="text-[#515151] font-inter text-sm sm:text-base lg:text-lg max-w-2xl">
                   Pilih kategori yang paling menarik bagimu, dan temukan cerita
                   perjuangan di balik produk lokal yang mereka ciptakan
                 </p>
               </div>
-              <div className="h-auto flex items-center lg:items-end">
-                <button className="primary-button text-white px-8 py-3.5 rounded-full font-geist-mono font-bold hover:bg-blue-800 transition-all duration-300 hover:shadow-lg whitespace-nowrap self-start lg:self-center hover:scale-105">
+              <div className="w-full lg:w-auto flex items-start lg:items-end">
+                <button className="primary-button w-full sm:w-auto text-white px-6 py-3 sm:px-8 sm:py-3.5 rounded-full font-geist-mono font-normal hover:bg-blue-800 transition-all duration-300 hover:shadow-lg whitespace-nowrap self-start lg:self-center hover:scale-105">
                   JELAJAHI UMKM
                 </button>
               </div>
@@ -166,19 +167,19 @@ const CategorySection = () => {
         </div>
 
         {/* Horizontal Scroll Container */}
-        <div className="relative pb-28">
+        <div className="relative pb-12 sm:pb-16 lg:pb-28">
           {/* Gradient Overlays */}
           {showLeftGradient && (
-            <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-[#FEFFFB] via-[#FEFFFB]/80 to-transparent z-10 pointer-events-none transition-opacity duration-300"></div>
+            <div className="hidden sm:block absolute left-0 top-0 bottom-0 w-16 sm:w-20 lg:w-24 bg-gradient-to-r from-[#FEFFFB] via-[#FEFFFB]/80 to-transparent z-10 pointer-events-none transition-opacity duration-300"></div>
           )}
           {showRightGradient && (
-            <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-[#FEFFFB] via-[#FEFFFB]/80 to-transparent z-10 pointer-events-none transition-opacity duration-300"></div>
+            <div className="hidden sm:block absolute right-0 top-0 bottom-0 w-16 sm:w-20 lg:w-24 bg-gradient-to-l from-[#FEFFFB] via-[#FEFFFB]/80 to-transparent z-10 pointer-events-none transition-opacity duration-300"></div>
           )}
 
           {/* Cards Container with Drag to Scroll */}
           <div
             ref={scrollContainerRef}
-            className="flex gap-6 overflow-hidden py-5 overflow-x-auto scrollbar-hide scroll-smooth cursor-grab select-none"
+            className="flex gap-4 sm:gap-5 lg:gap-6 overflow-hidden py-3 sm:py-4 lg:py-5 overflow-x-auto scrollbar-hide scroll-smooth cursor-grab select-none"
             onMouseDown={handleMouseDown}
             onMouseMove={handleMouseMove}
             onMouseUp={handleMouseUp}
@@ -203,7 +204,7 @@ const CategorySection = () => {
             }`}
             aria-hidden={!showRightGradient}
           >
-            <p className="text-sm text-gray-500">
+            <p className="text-xs sm:text-sm text-gray-500">
               ← Geser untuk melihat lebih banyak →
             </p>
           </div>

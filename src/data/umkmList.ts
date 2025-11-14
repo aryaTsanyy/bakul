@@ -26,9 +26,9 @@ export const umkmList: Umkm[] = [
     instagram: "@linkcoffee_barber",
     operatingHours: "10:00 - 22:00 WIB",
     location: {
-      lat: -7.424695165145097,
-      lng: 109.23711205147599,
-      googleMapsUrl: "https://goo.gl/maps/contohlinknavigasi",
+      lat: -7.4250037,
+      lng: 109.2345157,
+      googleMapsUrl: "https://maps.app.goo.gl/TF1kwg7mrn6ymA4K8",
     },
     productsAndServices: [
       { name: "Haircut Pria (Reguler)" },
@@ -40,9 +40,8 @@ export const umkmList: Umkm[] = [
       { name: "Roti Panggang Keju" },
     ],
     photos: [
-      "/images/link-barber-cover.jpg",
-      "/images/link-coffee-area.jpg",
-      "/images/link-cukur-interior.jpg",
+      "/UMKM/Link/Link.jpg",
+      // "/images/link-cukur-interior.jpg",
     ],
   },
   {
@@ -67,9 +66,9 @@ export const umkmList: Umkm[] = [
     instagram: "@patawi_coffee",
     operatingHours: "08:00 - 20:00 WIB",
     location: {
-      lat: -7.38156916150393,
-      lng: 109.26091358280509,
-      googleMapsUrl: "https://goo.gl/maps/contohlinknavigasi2",
+      lat: -7.3841747,
+      lng: 109.2425955,
+      googleMapsUrl: "https://maps.app.goo.gl/kM2eECdYWNc7zsRG8",
     },
     productsAndServices: [
       { name: "Kopi Arabica Bubuk" },
@@ -78,9 +77,9 @@ export const umkmList: Umkm[] = [
       { name: "Kopi Cold Brew" },
     ],
     photos: [
-      "/images/patawi-coffee-cover.jpg",
-      "/images/patawi-coffee-beans.jpg",
-      "/images/patawi-coffee-shop.jpg",
+      "/UMKM/Patawi/Patawi.png",
+      // "/images/patawi-coffee-beans.jpg",
+      // "/images/patawi-coffee-shop.jpg",
     ],
   },
   {
@@ -88,7 +87,7 @@ export const umkmList: Umkm[] = [
     slug: "utomo-house",
     name: "Utomo House Coffee Roastery",
     tagline: "Filter Coffee Enthusiast & Homey Roastery di Purwokerto",
-    categories: ["Minuman", "Jasa"],
+    categories: ["Minuman", "Makanan"],
     description:
       "Kedai kopi dengan roastery dan suasana homy, cocok untuk ngopi santai atau bekerja.",
     story:
@@ -99,15 +98,16 @@ export const umkmList: Umkm[] = [
       "kopi spesialti Banyumas",
       "co-working coffee Purwokerto",
     ],
-    averageRating: 4.6,
-    address: "Jl. Raya Kebanggan, Tambaksogra, Sumbang, Banyumas, Jawa Tengah",
-    phone: "",
+    averageRating: 4.8,
+    address:
+      "Jl. Raya Kebanggan, Dusun I, Tambaksogra, Kec. Sumbang, Kabupaten Banyumas, Jawa Tengah 53183",
+    phone: "+62 812-1568-9587",
     instagram: "@utomo_house",
     operatingHours: "09:00 - 23:00 WIB",
     location: {
-      lat: -7.38156916150393,
-      lng: 109.26091358280509,
-      googleMapsUrl: "https://goo.gl/maps/contohutomo",
+      lat: -7.381767,
+      lng: 109.2609886,
+      googleMapsUrl: "https://maps.app.goo.gl/KherJmdho3W2hXZp6",
     },
     productsAndServices: [
       { name: "Filter Coffee Single Origin" },
@@ -117,9 +117,16 @@ export const umkmList: Umkm[] = [
       { name: "Light Snack & Dessert" },
     ],
     photos: [
-      "/images/utomo-house-cover.jpg",
-      "/images/utomo-house-interior.jpg",
-      "/images/utomo-house-kopi.jpg",
+      "/UMKM/Utomo/UtomoHouse.jpeg",
+      "/UMKM/Utomo/Highlight.PNG",
+      "/UMKM/Utomo/Content-1.jpg",
+      "/UMKM/Utomo/Content-2.jpeg",
+      "/UMKM/Utomo/Content-3.jpg",
+      "/UMKM/Utomo/Content-4.jpg",
+      "/UMKM/Utomo/Content-5.jpg",
+      "/UMKM/Utomo/Content-6.jpg",
+      // "/images/utomo-house-interior.jpg",
+      // "/images/utomo-house-kopi.jpg",
     ],
   },
   {
@@ -127,7 +134,7 @@ export const umkmList: Umkm[] = [
     slug: "et-al-coffee",
     name: "Et Al Coffee Purwokerto",
     tagline: "Kafe Kekinian dengan Photobox & Area WFH Friendly",
-    categories: ["Minuman"],
+    categories: ["Minuman", "Makanan"],
     description:
       "Kafe modern dengan desain minimalis, area photobox, dan spot kerja nyaman.",
     story:
@@ -135,7 +142,7 @@ export const umkmList: Umkm[] = [
     searchKeywords: [
       "kafe instagramable Purwokerto",
       "photobox kafe Purwokerto",
-      "et al coffee Arya Purwokerto",
+      "et al coffee Purwokerto",
     ],
     averageRating: 4.5,
     address:
@@ -144,9 +151,9 @@ export const umkmList: Umkm[] = [
     instagram: "@etalcoffee.purwokerto",
     operatingHours: "10:00 - 22:00 WIB",
     location: {
-      lat: -7.433135819092331,
-      lng: 109.24858933613257,
-      googleMapsUrl: "https://goo.gl/maps/contohetal",
+      lat: -7.4331558,
+      lng: 109.2458319,
+      googleMapsUrl: "https://maps.app.goo.gl/kFr5p6W4HENgLcza8",
     },
     productsAndServices: [
       { name: "Et Al Signature Coffee" },
@@ -156,9 +163,9 @@ export const umkmList: Umkm[] = [
       { name: "Chicken Crispy Sambal Matah" },
     ],
     photos: [
-      "/images/et-al-coffee-cover.jpg",
-      "/images/et-al-coffee-photobox.jpg",
-      "/images/et-al-coffee-interior.jpg",
+      "/UMKM/EtAl/et-al-coffee.JPG",
+      // "/images/et-al-coffee-photobox.jpg",
+      // "/images/et-al-coffee-interior.jpg",
     ],
   },
   {
@@ -176,15 +183,15 @@ export const umkmList: Umkm[] = [
       "Designer agency Banyumas",
       "UI UX Purwokerto",
     ],
-    averageRating: 4.4,
+    averageRating: 4.8,
     address: "Purwokerto, Jawa Tengah",
     phone: "",
     instagram: "@potarastudio",
     operatingHours: "09:00 - 18:00 WIB",
     location: {
-      lat: -7.406515602820817,
-      lng: 109.25980856681922,
-      googleMapsUrl: "https://goo.gl/maps/contohpotara",
+      lat: -7.4066752,
+      lng: 109.2571693,
+      googleMapsUrl: "https://maps.app.goo.gl/3tyYXoy5jUiqFhgR7",
     },
     productsAndServices: [
       { name: "Brand Identity Design" },
@@ -193,9 +200,9 @@ export const umkmList: Umkm[] = [
       { name: "Print & Digital Media Design" },
     ],
     photos: [
-      "/images/potara-studio-workspace.jpg",
-      "/images/potara-studio-branding-project.jpg",
-      "/images/potara-studio-team.jpg",
+      "/UMKM/PotaraStudio/Potara.jpg",
+      "/UMKM/PotaraStudio/Highlight.png",
+      "/UMKM/PotaraStudio/Content-1.jpg",
     ],
   },
   {
@@ -214,15 +221,15 @@ export const umkmList: Umkm[] = [
       "mas jupri",
       "nasi goreng enak",
     ],
-    averageRating: 4.8,
+    averageRating: 4.1,
     address: "Tambak Batu, Purwokerto Selatan",
     phone: "085612345678",
     instagram: "@nasigorengmasjupri",
     operatingHours: "17:00 - 00:00 WIB",
     location: {
-      lat: -7.445868936797285,
-      lng: 109.230776088359,
-      googleMapsUrl: "https://goo.gl/maps/nasigorengmasjupri",
+      lat: -7.4461083,
+      lng: 109.2280939,
+      googleMapsUrl: "https://maps.app.goo.gl/8U5mc2ZLE1uRM9RL7",
     },
     productsAndServices: [
       { name: "Nasi Goreng Spesial" },
@@ -232,9 +239,9 @@ export const umkmList: Umkm[] = [
       { name: "Telur Dadar Jumbo" },
     ],
     photos: [
-      "/images/nasi-goreng-jupri-cover.jpg",
-      "/images/nasi-goreng-jupri-menu.jpg",
-      "/images/nasi-goreng-jupri-gerobak.jpg",
+      // "/images/nasi-goreng-jupri-cover.jpg",
+      // "/images/nasi-goreng-jupri-menu.jpg",
+      // "/images/nasi-goreng-jupri-gerobak.jpg",
     ],
   },
   {
@@ -260,9 +267,9 @@ export const umkmList: Umkm[] = [
     instagram: "@stopperperfume",
     operatingHours: "09:00 - 21:00 WIB",
     location: {
-      lat: -7.421133915907925,
-      lng: 109.23642286186836,
-      googleMapsUrl: "https://goo.gl/maps/stopperperfume",
+      lat: -7.4088158,
+      lng: 109.2373647,
+      googleMapsUrl: "https://maps.app.goo.gl/s27BTyUaDUYaunGo9",
     },
     productsAndServices: [
       { name: "Refill Parfum Eropa" },
@@ -272,9 +279,9 @@ export const umkmList: Umkm[] = [
       { name: "Paket Bisnis Parfum" },
     ],
     photos: [
-      "/images/stopper-perfume-centre-front.jpg",
-      "/images/stopper-perfume-centre-interior.jpg",
-      "/images/stopper-perfume-centre-products.jpg",
+      // "/images/stopper-perfume-centre-front.jpg",
+      // "/images/stopper-perfume-centre-interior.jpg",
+      // "/images/stopper-perfume-centre-products.jpg",
     ],
   },
   {
@@ -294,14 +301,15 @@ export const umkmList: Umkm[] = [
       "batik antodjamil",
     ],
     averageRating: 4.6,
-    address: "Jl. Dewa Kusuma RT 03 RW 01 Kauman, Sokaraja Tengah, Kab. Banyumas, Jawa Tengah 53181",
+    address:
+      "Jl. Dewa Kusuma RT 03 RW 01 Kauman, Sokaraja Tengah, Kab. Banyumas, Jawa Tengah 53181",
     phone: "+62-281-6441178",
     instagram: "@rumahbatikantodjamil",
     operatingHours: "08:00 - 20:00 WIB",
     location: {
       lat: -7.454296528345382,
       lng: 109.2942992958686,
-      googleMapsUrl: "https://goo.gl/maps/G7VV+CG8"
+      googleMapsUrl: "https://goo.gl/maps/G7VV+CG8",
     },
     productsAndServices: [
       { name: "Batik Tulis Khas Banyumas" },
@@ -309,9 +317,9 @@ export const umkmList: Umkm[] = [
       { name: "Souvenir & Kain Custom" },
     ],
     photos: [
-      "/images/batik-anto-djamil-cover.jpg",
-      "/images/batik-anto-djamil-gallery.jpg",
-      "/images/batik-anto-djamil-motif.jpg",
+      "/UMKM/BatikAnto/batik-anto-djamil.png",
+      // "/images/batik-anto-djamil-gallery.jpg",
+      // "/images/batik-anto-djamil-motif.jpg",
     ],
   },
   {
@@ -330,14 +338,15 @@ export const umkmList: Umkm[] = [
       "kuliner bebek purwokerto",
     ],
     averageRating: 4.7,
-    address: "Kompleks GOR Satria, Jl. Prof. Dr. Soeharso, Arcawinangun, Purwokerto Timur, Kab. Banyumas, Jawa Tengah",
+    address:
+      "Kompleks GOR Satria, Jl. Prof. Dr. Soeharso, Arcawinangun, Purwokerto Timur, Kab. Banyumas, Jawa Tengah",
     phone: "0895-3791-90294",
     instagram: "@bebekmasbudi.id",
     operatingHours: "10:00 - 22:00 WIB",
     location: {
       lat: -7.350669991299507,
       lng: 109.25848664693608,
-      googleMapsUrl: "https://goo.gl/maps/..."
+      googleMapsUrl: "https://goo.gl/maps/...",
     },
     productsAndServices: [
       { name: "Ayam Kampung Goreng" },
@@ -345,9 +354,9 @@ export const umkmList: Umkm[] = [
       { name: "Paket Nasi Box + Lalapan + Sambal" },
     ],
     photos: [
-      "/images/mas-budi-cover.jpg",
-      "/images/mas-budi-menu.jpg",
-      "/images/mas-budi-interior.jpg",
+      // "/images/mas-budi-cover.jpg",
+      // "/images/mas-budi-menu.jpg",
+      // "/images/mas-budi-interior.jpg",
     ],
   },
   {
@@ -372,9 +381,9 @@ export const umkmList: Umkm[] = [
     instagram: "@suluk.kopipecel",
     operatingHours: "07:00 - 22:00 WIB",
     location: {
-      lat: -7.397518189546129,
-      lng: 109.25041701110784,
-      googleMapsUrl: "https://goo.gl/maps/sulukkopipecel",
+      lat: -7.3977363,
+      lng: 109.2473915,
+      googleMapsUrl: "https://maps.app.goo.gl/8q1o8Nu8ZCJebA989",
     },
     productsAndServices: [
       { name: "Kopi Tubruk Banyumasan" },
@@ -385,9 +394,8 @@ export const umkmList: Umkm[] = [
       { name: "Wedang Uwuh Tradisional" },
     ],
     photos: [
-      "/images/suluk-kopipecel-cover.jpg",
-      "/images/suluk-kopipecel-interior.jpg",
-      "/images/suluk-kopipecel-menu.jpg",
+      "/UMKM/Suluk/Suluk.png",
+      // "/images/suluk-kopipecel-menu.jpg",
     ],
   },
   {
@@ -412,9 +420,9 @@ export const umkmList: Umkm[] = [
     instagram: "@estelercreamycakw",
     operatingHours: "10:00 - 21:00 WIB",
     location: {
-      lat: -7.426218,
-      lng: 109.239573,
-      googleMapsUrl: "https://goo.gl/maps/estelercreamycakwe",
+      lat: -7.3994944,
+      lng: 109.222395,
+      googleMapsUrl: "https://maps.app.goo.gl/naW7yJ9TgDXQgebx8",
     },
     productsAndServices: [
       { name: "Es Teler Creamy Original" },
@@ -422,9 +430,9 @@ export const umkmList: Umkm[] = [
       { name: "Es Teler Alpukat Kocok" },
     ],
     photos: [
-      "/images/es-teler-creamycakw-1.jpg",
-      "/images/es-teler-creamycakw-2.jpg",
-      "/images/es-teler-creamycakw-3.jpg",
+      //"/images/es-teler-creamycakw-1.jpg",
+      //"/images/es-teler-creamycakw-2.jpg",
+      //"/images/es-teler-creamycakw-3.jpg",
     ],
   },
 ];

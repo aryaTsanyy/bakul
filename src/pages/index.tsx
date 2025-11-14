@@ -1,5 +1,5 @@
 import { Geist, Geist_Mono } from "next/font/google";
-import Directory from "@/pages/directory";
+import HomeSection from "./HomePage/HomeSection";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,7 +16,7 @@ export default function Home() {
     <div
       className={`${geistSans.className} ${geistMono.className} left-0 w-full h-full min-h-screen `}
     >
-      <Directory />
+      <HomeSection />
     </div>
   );
 }
