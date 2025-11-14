@@ -99,25 +99,23 @@ const Navbar = () => {
                     </span>
                   </button>
 
-                  <Link href="/Directory">
-                    <button
-                      onClick={() => handleNavigate("/Directory")}
-                      className="relative text-gray-700 font-medium text-xs md:text-sm lg:text-base transition-all duration-300 overflow-hidden group px-2 py-1 transform"
-                      style={{ perspective: "100px" }}
+                  <Link
+                    href="/directory"
+                    className="relative text-gray-700 font-medium text-xs md:text-sm lg:text-base transition-all duration-300 overflow-hidden group px-2 py-1 transform"
+                    style={{ perspective: "100px" }}
+                  >
+                    <span
+                      className="inline-block transition-transform duration-500 ease-out group-hover:-translate-y-full group-hover:rotate-x-90 text-gray-700"
+                      style={{ transformStyle: "preserve-3d" }}
                     >
-                      <span
-                        className="inline-block transition-transform duration-500 ease-out group-hover:-translate-y-full group-hover:rotate-x-90 text-gray-700"
-                        style={{ transformStyle: "preserve-3d" }}
-                      >
-                        UMKM
-                      </span>
-                      <span
-                        className="absolute inset-0 flex items-center justify-center text-[#2A9DF4] transition-transform duration-500 ease-out translate-y-full group-hover:translate-y-0"
-                        style={{ transformStyle: "preserve-3d" }}
-                      >
-                        UMKM
-                      </span>
-                    </button>
+                      UMKM
+                    </span>
+                    <span
+                      className="absolute inset-0 flex items-center justify-center text-[#2A9DF4] transition-transform duration-500 ease-out translate-y-full group-hover:translate-y-0"
+                      style={{ transformStyle: "preserve-3d" }}
+                    >
+                      UMKM
+                    </span>
                   </Link>
                   <button
                     onClick={() => handleNavigate("#maps")}
