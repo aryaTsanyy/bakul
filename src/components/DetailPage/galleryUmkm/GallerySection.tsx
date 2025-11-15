@@ -55,22 +55,21 @@ const GallerySection: React.FC<GallerySectionProps> = ({
   };
 
   // Ambil 5 foto pertama untuk gallery
-  const galleryPhotos = photos.slice(0, 5);
+  const galleryPhotos = photos.slice(2, 7);
 
   return (
     <section
       ref={sectionRef}
-      className="bg-white w-full h-full min-h-screen px-4 sm:px-10 md:px-12 lg:px-24 py-16 sm:py-20 lg:py-24 overflow-hidden relative"
+      className="bg-transparent w-full h-full min-h-screen px-4 sm:px-10 md:px-12 lg:px-24 py-16 sm:py-20 lg:py-24 overflow-hidden relative"
     >
       <div className="w-full h-full mx-auto flex flex-col items-center justify-center gap-4 lg:gap-16 relative">
         {/* Title with reveal animation */}
         <div className="text-center">
           <h2
-            className={`text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 tracking-tight transition-all duration-1000 ${
+            className={`font-anton text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 tracking-tight transition-all duration-1000 ${
               inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
             }`}
             style={{
-              fontFamily: "system-ui, -apple-system, sans-serif",
               letterSpacing: "0.05em",
             }}
           >

@@ -22,15 +22,14 @@ const TestimonialSection = () => {
         setIsTyping(false);
         clearInterval(typingInterval);
       }
-    }, 30);
+    }, 20);
 
     return () => clearInterval(typingInterval);
   }, [activeIndex]);
 
   return (
-    <div className="min-h-screen bg-transparent flex items-center justify-center py-20 px-4">
+    <div className="min-h-screen testimoni-sanier bg-transparent flex items-center justify-center py-20 px-4">
       <div className="w-full">
-        {/* Title Section */}
         <div className="text-center mb-16 gap-4 flex flex-col items-center">
           <div className="inline-block">
             <span className="text-[#19395F] font-geist-mono  text-sm tracking-wider animate-pulse">
@@ -42,7 +41,6 @@ const TestimonialSection = () => {
           </h2>
         </div>
 
-        {/* Avatar Cards */}
         <div className="flex justify-center items-end gap-6 mb-12">
           {testimonialList.map((testimonial, index) => (
             <button
@@ -55,14 +53,13 @@ const TestimonialSection = () => {
               }`}
             >
               <div className="relative">
-                {/* Glow effect for active card */}
                 {activeIndex === index && (
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#13569C] to-purple-500 rounded-3xl blur-xl opacity-60 animate-pulse"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#13569C] to-[#2A9DF4] rounded-3xl blur-xl opacity-60 animate-pulse"></div>
                 )}
                 <div
                   className={`relative w-24 h-24 md:w-32 md:h-32 rounded-3xl overflow-hidden border-4 transition-all duration-500 ${
                     activeIndex === index
-                      ? "border-[#13569C] shadow-2xl shadow-blue-500/50"
+                      ? "border-[#2A9DF4] shadow-2xl shadow-blue-500/50"
                       : "border-slate-300 shadow-lg"
                   }`}
                 >
@@ -74,7 +71,6 @@ const TestimonialSection = () => {
                     className="w-full h-full object-cover"
                   />
 
-                  {/* Overlay gradient */}
                   <div
                     className={`absolute inset-0 bg-gradient-to-t from-black/30 to-transparent transition-opacity duration-500 ${
                       activeIndex === index ? "opacity-0" : "opacity-100"
@@ -84,7 +80,7 @@ const TestimonialSection = () => {
 
                 {/* Active indicator */}
                 {activeIndex === index && (
-                  <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-blue-500 rounded-full animate-bounce"></div>
+                  <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-[#2A9DF4] rounded-full animate-bounce"></div>
                 )}
               </div>
             </button>
@@ -99,7 +95,7 @@ const TestimonialSection = () => {
             <div className="absolute bottom-0 left-0 w-48 h-48 bg-gradient-to-tr from-pink-100 to-orange-100 rounded-full blur-3xl opacity-30 -z-10"></div>
 
             {/* Quote icon */}
-            <div className="text-[#13569C] mb-6 opacity-20">
+            <div className="text-[#2A9DF4] mb-6 opacity-20">
               <svg
                 className="w-12 h-12"
                 fill="currentColor"
@@ -111,10 +107,10 @@ const TestimonialSection = () => {
 
             {/* Feedback text with fixed height */}
             <div className="mb-8 min-h-[120px] flex items-center">
-              <p className="text-xl font-anton md:text-2xl text-[#081F36] font-normal text-center">
+              <p className="text-xl font-anton md:text-3xl text-[#081F36] font-normal leading-[150%] text-center">
                 {displayedText}
                 {isTyping && (
-                  <span className="inline-block w-1 h-6 bg-[#13569C] ml-1 animate-blink"></span>
+                  <span className="inline-block w-1 h-6 bg-[#2A9DF4] ml-1 animate-blink"></span>
                 )}
               </p>
             </div>
@@ -125,7 +121,7 @@ const TestimonialSection = () => {
                 <h4 className="text-lg font-geist-mono font-medium text-[#19395F]">
                   {testimonialList[activeIndex].name}
                 </h4>
-                <div className="w-1 h-1 items-center bg-[#13569C] rounded-full"></div>
+                <div className="w-1 h-1 items-center bg-[#2A9DF4] rounded-full"></div>
                 <p className="text-lg text-[#19395F] font-geist-mono font-medium">
                   {testimonialList[activeIndex].business}
                 </p>
@@ -140,7 +136,7 @@ const TestimonialSection = () => {
                   onClick={() => setActiveIndex(index)}
                   className={`h-1.5 rounded-full transition-all duration-500 ${
                     activeIndex === index
-                      ? "w-12 bg-[#13569C]"
+                      ? "w-12 bg-[#2A9DF4]"
                       : "w-6 bg-slate-300 hover:bg-slate-400"
                   }`}
                   aria-label={`Go to testimonial ${index + 1}`}

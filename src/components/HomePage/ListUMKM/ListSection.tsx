@@ -1,13 +1,14 @@
 import React from "react";
 import ListCard from "@/components/HomePage/ListUMKM/ListCard";
 import { umkmList } from "@/data/umkmList";
+import CircleExpandButton from "@/components/button/PrimaryButton";
 
 const ListSection = () => {
   const topUMKMs = umkmList
     .sort((a, b) => b.averageRating - a.averageRating)
     .slice(0, 3);
   return (
-    <div className="min-h-screen bg-[#FEFFFB] py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20">
+    <div className="min-h-screen bg-transparent py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20">
       <style>{`
         @keyframes fadeInRight {
           from {
@@ -44,16 +45,14 @@ const ListSection = () => {
       `}</style>
 
       <div className="w-full h-full mx-auto">
-        {/* Header */}
-        <div className="mb-8 sm:mb-10 lg:mb-12">
-          <p className="text-xs sm:text-sm text-[#19395F] tracking-wider">
-            [ TOP UMKM ]
-          </p>
-        </div>
-
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-12 items-start">
           {/* Left Content */}
           <div className="lg:col-span-5 xl:col-span-6">
+            <div className="mb-8 sm:mb-10 lg:mb-12">
+              <p className="font-geist-mono text-xs sm:text-xl text-[#19395F] tracking-wider">
+                [ TOP UMKM ]
+              </p>
+            </div>
             <div className="lg:sticky lg:top-24">
               <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-5xl font-black text-[#081F36] mb-4 sm:mb-5 lg:mb-6 leading-tight max-w-full lg:max-w-[90%]">
                 MENJADI WADAH BAGI UMKM TERBAIK NEGERI
@@ -65,24 +64,7 @@ const ListSection = () => {
                 di balik usahanya.
               </p>
 
-              <button className="bg-[#13569C] text-white px-6 sm:px-8 py-3 sm:py-3.5 rounded-full font-bold hover:bg-blue-800 transition-all duration-300 hover:shadow-xl hover:scale-105 group text-sm sm:text-base">
-                <span className="flex items-center gap-2">
-                  JELAJAHI UMKM
-                  <svg
-                    className="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 group-hover:translate-x-1"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 5l7 7-7 7"
-                    />
-                  </svg>
-                </span>
-              </button>
+              <CircleExpandButton href="/Directory" className="max-w-[210px]" />
             </div>
           </div>
 

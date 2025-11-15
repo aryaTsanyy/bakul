@@ -4,16 +4,29 @@ import Link from "next/link";
 import UMKMDetailPage from "@/components/DetailPage/UMKMDetailPage";
 import { umkmList } from "@/data/umkmList";
 import type { Umkm } from "@/pages/api/umkm";
+import { Geist, Geist_Mono } from "next/font/google";
 
 interface DetailPageProps {
   umkm: Umkm | null;
 }
 
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
 export default function DetailPage({ umkm }: DetailPageProps) {
   // Jika UMKM tidak ditemukan
   if (!umkm) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+      <div
+        className={`${geistSans.className} ${geistMono.className} min-h-screen flex items-center justify-center bg-gray-50`}
+      >
         <div className="text-center px-4">
           <div className="mb-6">
             <div className="w-24 h-24 bg-gray-200 rounded-full mx-auto mb-4 flex items-center justify-center">

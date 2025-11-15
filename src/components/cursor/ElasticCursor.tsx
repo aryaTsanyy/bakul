@@ -1,238 +1,270 @@
 "use client";
 
-import React, { useEffect, useRef, useState, useCallback } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { gsap } from "gsap";
 
-interface CursorPosition {
+type GsapQuickSetter = ReturnType<typeof gsap.quickSetter>;
+interface Position {
   x: number;
   y: number;
 }
 
-const ElasticCursor = () => {
-  const cursorDotRef = useRef<HTMLDivElement>(null);
-  const cursorRingRef = useRef<HTMLDivElement>(null);
-  const requestRef = useRef<number | null>(null);
-  const previousTimeRef = useRef<number | undefined>(undefined);
+const JellyCursor = () => {
+  const cursorRef = useRef<HTMLDivElement>(null);
+  const animationFrameRef = useRef<number | null>(null);
 
-  const mousePosition = useRef<CursorPosition>({ x: 0, y: 0 });
-  const dotPosition = useRef<CursorPosition>({ x: 0, y: 0 });
-  const ringPosition = useRef<CursorPosition>({ x: 0, y: 0 });
+  const pos = useRef<Position>({ x: 0, y: 0 });
+  const vel = useRef<Position>({ x: 0, y: 0 });
+  const targetPos = useRef<Position>({ x: 0, y: 0 });
+  const isHoveringRef = useRef(false);
 
-  const [isHovering, setIsHovering] = useState(false);
-  const [isClicking, setIsClicking] = useState(false);
-  const [isHidden, setIsHidden] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
-  // Deteksi mobile device
-  useEffect(() => {
-    const checkMobile = () => {
-      const mobile =
-        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-          navigator.userAgent
-        ) || window.innerWidth < 768;
-      setIsMobile(mobile);
-    };
+  // Quick Setters untuk performa optimal
+  const setters = useRef<{
+    x: GsapQuickSetter | null;
+    y: GsapQuickSetter | null;
+    rotate: GsapQuickSetter | null;
+    scaleX: GsapQuickSetter | null;
+    scaleY: GsapQuickSetter | null;
+    opacity: GsapQuickSetter | null;
+  }>({
+    x: null,
+    y: null,
+    rotate: null,
+    scaleX: null,
+    scaleY: null,
+    opacity: null,
+  });
 
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
+  // Deteksi mobile & touch device
+  useEffect(() => {
+    const isTouchDevice =
+      "ontouchstart" in window ||
+      navigator.maxTouchPoints > 0 ||
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      ) ||
+      window.innerWidth < 768;
+
+    setIsMobile(isTouchDevice);
   }, []);
 
-  // Lerp (Linear Interpolation) function for smooth movement
-  const lerp = (start: number, end: number, factor: number): number => {
-    return start + (end - start) * factor;
+  // Calculate scale based on velocity (Jelly Effect)
+  const getScale = (diffX: number, diffY: number): number => {
+    const distance = Math.sqrt(Math.pow(diffX, 2) + Math.pow(diffY, 2));
+    return Math.min(distance / 100, 0.25);
   };
 
-  // Animation loop dengan RAF (optimized untuk server)
-  const animate = useCallback((time: number) => {
-    if (previousTimeRef.current !== undefined) {
-      // Elastic animation untuk dot (lebih cepat)
-      dotPosition.current.x = lerp(
-        dotPosition.current.x,
-        mousePosition.current.x,
-        0.25
-      );
-      dotPosition.current.y = lerp(
-        dotPosition.current.y,
-        mousePosition.current.y,
-        0.25
-      );
+  // Calculate angle for rotation (Jelly Effect)
+  const getAngle = (diffX: number, diffY: number): number => {
+    return (Math.atan2(diffY, diffX) * 180) / Math.PI;
+  };
 
-      // Elastic animation untuk ring (lebih lambat - efek elastic)
-      ringPosition.current.x = lerp(
-        ringPosition.current.x,
-        mousePosition.current.x,
-        0.15
-      );
-      ringPosition.current.y = lerp(
-        ringPosition.current.y,
-        mousePosition.current.y,
-        0.15
-      );
+  // Update cursor position and jelly effect
+  const update = () => {
+    if (!setters.current.x || !setters.current.y) return;
 
-      // Update DOM
-      if (cursorDotRef.current) {
-        cursorDotRef.current.style.transform = `translate(${dotPosition.current.x}px, ${dotPosition.current.y}px)`;
-      }
-      if (cursorRingRef.current) {
-        cursorRingRef.current.style.transform = `translate(${ringPosition.current.x}px, ${ringPosition.current.y}px)`;
-      }
+    const rotation = getAngle(vel.current.x, vel.current.y);
+    const scale = getScale(vel.current.x, vel.current.y);
+
+    // Update position & rotation
+    setters.current.x(pos.current.x);
+    setters.current.y(pos.current.y);
+    setters.current.rotate?.(rotation);
+
+    // Apply jelly scale effect (hanya kalau tidak hover)
+    if (!isHoveringRef.current) {
+      setters.current.scaleX?.(1 + scale);
+      setters.current.scaleY?.(1 - scale);
     }
+  };
 
-    previousTimeRef.current = time;
-    requestRef.current = requestAnimationFrame(animate);
-  }, []);
+  // Animation loop
+  const animate = () => {
+    const speed = 0.35;
 
-  // Mouse move handler (throttled)
-  const handleMouseMove = useCallback((e: MouseEvent) => {
-    mousePosition.current = { x: e.clientX, y: e.clientY };
-  }, []);
+    // Update position dengan elastic movement
+    pos.current.x += (targetPos.current.x - pos.current.x) * speed;
+    pos.current.y += (targetPos.current.y - pos.current.y) * speed;
 
-  // Mouse down/up handlers
-  const handleMouseDown = useCallback(() => {
-    setIsClicking(true);
-  }, []);
+    // Calculate velocity
+    vel.current.x = targetPos.current.x - pos.current.x;
+    vel.current.y = targetPos.current.y - pos.current.y;
 
-  const handleMouseUp = useCallback(() => {
-    setIsClicking(false);
-  }, []);
+    update();
+    animationFrameRef.current = requestAnimationFrame(animate);
+  };
 
-  // Mouse enter/leave handlers
-  const handleMouseEnter = useCallback(() => {
-    setIsHidden(false);
-  }, []);
-
-  const handleMouseLeave = useCallback(() => {
-    setIsHidden(true);
-  }, []);
-
-  // Hover detection untuk interactive elements
+  // Setup GSAP QuickSetters
   useEffect(() => {
-    if (isMobile) return;
+    if (isMobile || !cursorRef.current) return;
 
-    const handleHoverElements = () => {
-      const interactiveElements = document.querySelectorAll(
-        'a, button, input, textarea, select, [role="button"], .cursor-pointer'
-      );
+    const cursor = cursorRef.current;
 
-      const handleMouseEnterElement = () => setIsHovering(true);
-      const handleMouseLeaveElement = () => setIsHovering(false);
+    // Initialize QuickSetters
+    setters.current.x = gsap.quickSetter(cursor, "x", "px");
+    setters.current.y = gsap.quickSetter(cursor, "y", "px");
+    setters.current.rotate = gsap.quickSetter(cursor, "rotate", "deg");
+    setters.current.scaleX = gsap.quickSetter(cursor, "scaleX");
+    setters.current.scaleY = gsap.quickSetter(cursor, "scaleY");
+    setters.current.opacity = gsap.quickSetter(cursor, "opacity");
 
-      interactiveElements.forEach((el) => {
-        el.addEventListener("mouseenter", handleMouseEnterElement);
-        el.addEventListener("mouseleave", handleMouseLeaveElement);
-      });
+    // Initialize position di tengah screen
+    const centerX = window.innerWidth / 2;
+    const centerY = window.innerHeight / 2;
+    pos.current = { x: centerX, y: centerY };
+    targetPos.current = { x: centerX, y: centerY };
 
-      return () => {
-        interactiveElements.forEach((el) => {
-          el.removeEventListener("mouseenter", handleMouseEnterElement);
-          el.removeEventListener("mouseleave", handleMouseLeaveElement);
-        });
-      };
-    };
-
-    const cleanup = handleHoverElements();
-
-    // Re-attach listeners on DOM changes (untuk dynamic content)
-    const observer = new MutationObserver(handleHoverElements);
-    observer.observe(document.body, { childList: true, subtree: true });
+    // Start animation loop
+    animationFrameRef.current = requestAnimationFrame(animate);
 
     return () => {
-      cleanup();
-      observer.disconnect();
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
     };
   }, [isMobile]);
 
-  // Setup event listeners dan animation
+  // Mouse move handler
   useEffect(() => {
     if (isMobile) return;
 
-    // Initialize positions
-    mousePosition.current = {
-      x: window.innerWidth / 2,
-      y: window.innerHeight / 2,
-    };
-    dotPosition.current = {
-      x: window.innerWidth / 2,
-      y: window.innerHeight / 2,
-    };
-    ringPosition.current = {
-      x: window.innerWidth / 2,
-      y: window.innerHeight / 2,
+    const handleMouseMove = (e: MouseEvent) => {
+      targetPos.current.x = e.clientX;
+      targetPos.current.y = e.clientY;
     };
 
-    document.addEventListener("mousemove", handleMouseMove);
-    document.addEventListener("mousedown", handleMouseDown);
-    document.addEventListener("mouseup", handleMouseUp);
-    document.addEventListener("mouseenter", handleMouseEnter);
-    document.addEventListener("mouseleave", handleMouseLeave);
-
-    requestRef.current = requestAnimationFrame(animate);
+    window.addEventListener("mousemove", handleMouseMove);
 
     return () => {
-      document.removeEventListener("mousemove", handleMouseMove);
-      document.removeEventListener("mousedown", handleMouseDown);
-      document.removeEventListener("mouseup", handleMouseUp);
-      document.removeEventListener("mouseenter", handleMouseEnter);
-      document.removeEventListener("mouseleave", handleMouseLeave);
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, [isMobile]);
 
-      if (requestRef.current) {
-        cancelAnimationFrame(requestRef.current);
+  // Hover handlers untuk clickable elements
+  useEffect(() => {
+    if (isMobile || !cursorRef.current) return;
+
+    const cursor = cursorRef.current;
+    const clickableSelector =
+      'a, button, input, textarea, select, [role="button"], .cursor-pointer';
+
+    const handleMouseEnter = () => {
+      isHoveringRef.current = true;
+      gsap.to(cursor, {
+        scale: 0.5,
+        duration: 0.3,
+        ease: "power2.out",
+      });
+    };
+
+    const handleMouseLeave = () => {
+      isHoveringRef.current = false;
+
+      gsap.to(cursor, {
+        scale: 1,
+        duration: 0.3,
+        ease: "power2.out",
+      });
+    };
+    const handleMouseOver = (e: MouseEvent) => {
+      if (isHoveringRef.current) return; // Jangan lakukan apapun jika sudah hover
+      const target = e.target as HTMLElement;
+      if (target.closest(clickableSelector)) {
+        handleMouseEnter();
       }
     };
-  }, [
-    isMobile,
-    animate,
-    handleMouseMove,
-    handleMouseDown,
-    handleMouseUp,
-    handleMouseEnter,
-    handleMouseLeave,
-  ]);
+    const handleMouseOut = (e: MouseEvent) => {
+      if (!isHoveringRef.current) return; // Jangan lakukan apapun jika tidak hover
+      const target = e.target as HTMLElement;
+      // 'relatedTarget' adalah elemen tujuan saat mouse keluar
+      const relatedTarget = e.relatedTarget as HTMLElement;
+
+      // Cek jika kita benar-benar "meninggalkan" elemen (bukan pindah ke anak)
+      if (
+        !relatedTarget ||
+        !target.closest(clickableSelector) ||
+        !relatedTarget.closest(clickableSelector)
+      ) {
+        handleMouseLeave();
+      }
+    };
+    document.body.addEventListener("mouseover", handleMouseOver);
+    document.body.addEventListener("mouseout", handleMouseOut);
+
+    return () => {
+      // Hapus SATU kali dari document.body
+      document.body.removeEventListener("mouseover", handleMouseOver);
+      document.body.removeEventListener("mouseout", handleMouseOut);
+    };
+  }, [isMobile]);
+
+  // Hide/Show cursor saat leave/enter viewport
+  useEffect(() => {
+    if (isMobile || !cursorRef.current) return;
+
+    const cursor = cursorRef.current;
+
+    const hideCursor = () => {
+      gsap.to(cursor, {
+        opacity: 0,
+        duration: 0.7,
+        ease: "power2.out",
+      });
+    };
+
+    const showCursor = () => {
+      gsap.to(cursor, {
+        opacity: 1,
+        duration: 0.7,
+        ease: "power2.out",
+      });
+    };
+
+    document.addEventListener("mouseleave", hideCursor);
+    document.addEventListener("mouseenter", showCursor);
+
+    // Handle iframes
+    const iframes = document.querySelectorAll("iframe");
+    iframes.forEach((iframe) => {
+      iframe.addEventListener("mouseenter", hideCursor);
+      iframe.addEventListener("mouseleave", showCursor);
+    });
+
+    return () => {
+      document.removeEventListener("mouseleave", hideCursor);
+      document.removeEventListener("mouseenter", showCursor);
+
+      iframes.forEach((iframe) => {
+        iframe.removeEventListener("mouseenter", hideCursor);
+        iframe.removeEventListener("mouseleave", showCursor);
+      });
+    };
+  }, [isMobile]);
 
   // Don't render on mobile
   if (isMobile) return null;
 
   return (
     <>
-      {/* Cursor Dot */}
+      {/* Jelly Cursor */}
       <div
-        ref={cursorDotRef}
-        className={`cursor-dot ${isHidden ? "hidden" : ""} ${
-          isClicking ? "clicking" : ""
-        }`}
+        ref={cursorRef}
+        id="jelly-cursor"
+        className="jelly-cursor"
         style={{
           position: "fixed",
-          top: "-6px",
-          left: "-6px",
-          width: "12px",
-          height: "12px",
-          borderRadius: "50%",
-          backgroundColor: "#000",
-          pointerEvents: "none",
-          zIndex: 10000,
-          transition: "transform 0.15s ease-out, opacity 0.3s ease",
-          willChange: "transform",
-        }}
-      />
-
-      {/* Cursor Ring (Donut) */}
-      <div
-        ref={cursorRingRef}
-        className={`cursor-ring ${isHidden ? "hidden" : ""} ${
-          isHovering ? "hovering" : ""
-        } ${isClicking ? "clicking" : ""}`}
-        style={{
-          position: "fixed",
-          top: "-20px",
-          left: "-20px",
+          top: 0,
+          left: 0,
           width: "40px",
           height: "40px",
-          border: "2px solid #000",
           borderRadius: "50%",
+          backgroundColor: "#fff",
           pointerEvents: "none",
-          zIndex: 9999,
-          transition: "all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+          zIndex: 10000,
           willChange: "transform",
+          transform: "translate(-50%, -50%)",
         }}
       />
 
@@ -242,49 +274,15 @@ const ElasticCursor = () => {
           cursor: none !important;
         }
 
-        /* Cursor states */
-        .cursor-dot.hidden,
-        .cursor-ring.hidden {
-          opacity: 0;
-        }
-
-        .cursor-dot.clicking {
-          transform: scale(0.8) !important;
-        }
-
-        .cursor-ring.clicking {
-          transform: scale(0.85) !important;
-          border-width: 3px;
-        }
-
-        .cursor-ring.hovering {
-          width: 60px !important;
-          height: 60px !important;
-          top: -30px !important;
-          left: -30px !important;
-          border-color: #13569c;
-          background-color: rgba(19, 86, 156, 0.1);
-          border-width: 2.5px;
-        }
-
-        /* Smooth scale animation for hover */
-        .cursor-ring {
-          animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-        }
-
-        @keyframes pulse {
-          0%,
-          100% {
-            opacity: 1;
-          }
-          50% {
-            opacity: 0.8;
-          }
+        /* Jelly Cursor */
+        .jelly-cursor {
+          mix-blend-mode: difference;
+          filter: blur(0px);
+          transition: filter 0.3s ease;
         }
 
         /* Performance optimizations */
-        .cursor-dot,
-        .cursor-ring {
+        .jelly-cursor {
           -webkit-backface-visibility: hidden;
           -moz-backface-visibility: hidden;
           -webkit-transform: translateZ(0);
@@ -304,23 +302,24 @@ const ElasticCursor = () => {
           cursor: text !important;
         }
 
-        /* Smooth transitions for interactive elements */
-        a,
-        button,
-        [role="button"],
-        .cursor-pointer {
-          transition: transform 0.2s ease, box-shadow 0.2s ease;
+        /* Remove default outline */
+        *:focus {
+          outline: none;
         }
 
-        a:hover,
-        button:hover,
-        [role="button"]:hover,
-        .cursor-pointer:hover {
-          transform: translateY(-1px);
+        /* Text selection color */
+        ::selection {
+          background-color: rgba(42, 157, 244, 0.3);
+          color: inherit;
+        }
+
+        ::-moz-selection {
+          background-color: rgba(42, 157, 244, 0.3);
+          color: inherit;
         }
       `}</style>
     </>
   );
 };
 
-export default ElasticCursor;
+export default JellyCursor;

@@ -2,6 +2,7 @@
 import React, { useRef, useState, useEffect, useMemo } from "react";
 import CategoryCard from "@/components/HomePage/Category/CategoryCard";
 import { umkmList } from "@/data/umkmList";
+import CircleExpandButton from "@/components/button/PrimaryButton";
 
 interface Category {
   id: number;
@@ -119,7 +120,7 @@ const CategorySection = () => {
   }, []);
 
   return (
-    <div className="h-full w-full flex flex-col items-center justify-center px-5 py-12 sm:px-8 sm:py-16 md:px-12 md:py-20 lg:px-20 lg:py-28">
+    <div className="min-h-screen h-full w-full flex flex-col items-center justify-center px-5 py-12 sm:px-8 sm:py-16 md:px-12 md:py-20 lg:px-20 lg:py-28">
       <style>{`
         @keyframes fadeInUp {
           from {
@@ -140,9 +141,9 @@ const CategorySection = () => {
         }
       `}</style>
 
-      <div className="w-full h-full">
+      <div className="w-full h-full flex flex-col">
         {/* Header Section */}
-        <div className="flex flex-col mb-8 sm:mb-10 lg:mb-12 gap-6">
+        <div className="flex fade-in flex-col mb-8 sm:mb-10 lg:mb-12 gap-6">
           <div className="flex-1">
             <p className="text-xs font-geist-mono sm:text-sm darkblue-text mb-6 sm:mb-8 lg:mb-10 tracking-wider">
               [ KATEGORI ]
@@ -158,9 +159,10 @@ const CategorySection = () => {
                 </p>
               </div>
               <div className="w-full lg:w-auto flex items-start lg:items-end">
-                <button className="primary-button w-full sm:w-auto text-white px-6 py-3 sm:px-8 sm:py-3.5 rounded-full font-geist-mono font-normal hover:bg-blue-800 transition-all duration-300 hover:shadow-lg whitespace-nowrap self-start lg:self-center hover:scale-105">
-                  JELAJAHI UMKM
-                </button>
+                <CircleExpandButton
+                  href="/directory"
+                  className="max-w-52 md:max-w-md"
+                />
               </div>
             </div>
           </div>
@@ -170,10 +172,10 @@ const CategorySection = () => {
         <div className="relative pb-12 sm:pb-16 lg:pb-28">
           {/* Gradient Overlays */}
           {showLeftGradient && (
-            <div className="hidden sm:block absolute left-0 top-0 bottom-0 w-16 sm:w-20 lg:w-24 bg-gradient-to-r from-[#FEFFFB] via-[#FEFFFB]/80 to-transparent z-10 pointer-events-none transition-opacity duration-300"></div>
+            <div className="hidden sm:block absolute left-0 top-0 bottom-0 w-16 sm:w-20 lg:w-24 bg-gradient-to-r from-[#f6f6f6] via-[#f6f6f6]/80 to-transparent z-10 pointer-events-none transition-opacity duration-300"></div>
           )}
           {showRightGradient && (
-            <div className="hidden sm:block absolute right-0 top-0 bottom-0 w-16 sm:w-20 lg:w-24 bg-gradient-to-l from-[#FEFFFB] via-[#FEFFFB]/80 to-transparent z-10 pointer-events-none transition-opacity duration-300"></div>
+            <div className="hidden sm:block absolute right-0 top-0 bottom-0 w-16 sm:w-20 lg:w-24 bg-gradient-to-l from-[#f6f6f6] via-[#f6f6f6]/80 to-transparent z-10 pointer-events-none transition-opacity duration-300"></div>
           )}
 
           {/* Cards Container with Drag to Scroll */}

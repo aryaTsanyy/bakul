@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: white;
+  --background: #f6f6f6;
   --green: #b5ea33;
   --foreground: #171717;
   --blue-primmary: #13569c;
@@ -11,13 +11,21 @@
   --dark-text-secondary: #161d04;
 }
 
-* {
-  scroll-behavior: smooth;
+#smooth-wrapper {
+  overflow: hidden;
 }
 
+#smooth-content {
+  overflow: visible;
+  width: 100%;
+  background: #f6f6f6;
+}
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
+}
+html.has-scroll-smooth {
+  overflow: hidden;
 }
 body {
   background: var(--background);
@@ -44,8 +52,9 @@ section {
   background-color: var(--blue-secondary);
 }
 .primary-button {
-  background: var(--blue-secondary);
-  padding: 14px 32px;
+  background: #ffffff;
+  padding: 8px 8px 8px 16px;
+  border-radius: 50px;
 }
 .dark-text {
   color: var(--dark-text);
@@ -90,16 +99,18 @@ textarea {
   animation: marquee 3s linear infinite;
 }
 
-/* Di globals.css */
 .bg-overlay {
   transform-origin: center center;
 }
 
-/* Smooth transitions untuk text */
 .text-transition {
   transition: all 0.3s ease;
 }
 
+.main-content-wrapper {
+  position: relative;
+  z-index: 15;
+}
 /* Custom animations for search form */
 @keyframes fadeInUp {
   0% {
@@ -180,11 +191,6 @@ textarea {
 /* Map Tile Layer Styling */
 .map-tiles {
   filter: hue-rotate(10deg) saturate(1.1);
-  /* Uncomment untuk efek lain:
-  filter: brightness(0.98) contrast(1.05) saturate(1.1);
-  filter: grayscale(0.1) brightness(0.95);
-  filter: sepia(0.1) saturate(1.2);
-  */
 }
 
 /* Dark mode map (opsional) */

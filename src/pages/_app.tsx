@@ -3,10 +3,7 @@ import { Anton, Inter, Geist_Mono } from "next/font/google";
 import Head from "next/head";
 import "@/styles/globals.css";
 import dynamic from "next/dynamic";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { ScrollSmoother } from "gsap/dist/ScrollSmoother";
-import { useGSAP } from "@gsap/react";
+import SmoothScroll from "@/components/scrolls/SmoothScroll";
 
 const ElasticCursor = dynamic(
   () => import("@/components/cursor/ElasticCursor"),
@@ -14,9 +11,6 @@ const ElasticCursor = dynamic(
     ssr: false, // Disable server-side rendering
   }
 );
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger, ScrollSmoother, useGSAP);
-}
 
 const anton = Anton({
   variable: "--font-anton",
@@ -47,7 +41,9 @@ export default function App({ Component, pageProps }: AppProps) {
       <div
         className={`${anton.variable} ${inter.variable} ${geistMono.variable}`}
       >
-        <Component {...pageProps} />
+        <SmoothScroll>
+          <Component {...pageProps} />
+        </SmoothScroll>
       </div>
       <ElasticCursor />
     </>

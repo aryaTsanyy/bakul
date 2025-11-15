@@ -2,6 +2,7 @@ import { Star } from "lucide-react";
 import Image from "next/image";
 import React, { useState } from "react";
 import { Umkm } from "@/pages/api/umkm";
+import SecondaryButton from "@/components/button/SecondaryButton";
 
 interface UMKMDetailPageProps {
   umkm: Umkm;
@@ -11,7 +12,7 @@ const OverviewSection: React.FC<UMKMDetailPageProps> = ({ umkm }) => {
   const [isImageHovered, setIsImageHovered] = useState(false);
   useState(isImageHovered);
   return (
-    <section className="bg-white min-h-screen flex items-center justify-center w-full h-full">
+    <section className="bg-transparent min-h-screen flex items-center justify-center w-full h-full">
       <div className="w-full h-full mx-auto px-10 sm:px-20 lg:px-24 py-12 sm:py-16">
         <div className="w-full h-full grid grid-cols-1 lg:grid-cols-4 gap-12 lg:gap-24 items-start">
           {/* Info Section */}
@@ -40,16 +41,13 @@ const OverviewSection: React.FC<UMKMDetailPageProps> = ({ umkm }) => {
               </div>
               {/* CTA Button */}
               <div className="pt-4">
-                <a
+                <SecondaryButton
                   href={umkm.location.googleMapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-secondary-blue text-white font-bold rounded-full transition-all duration-300 hover:shadow-xl hover:scale-105 text-base sm:text-lg"
                 >
-                  <span className="font-geist-mono text-white font-semibold">
-                    KUNJUNGI LOKASI
-                  </span>
-                </a>
+                  KUNJUNGI LOKASI
+                </SecondaryButton>
               </div>
             </div>
             {/* Contact Info */}
@@ -135,11 +133,7 @@ const OverviewSection: React.FC<UMKMDetailPageProps> = ({ umkm }) => {
               {/* Bottom Gradient Overlay */}
               <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black/60 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               {/* Hover Text */}
-              <div className="absolute bottom-6 left-6 right-6 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
-                <p className="text-white font-bold text-lg drop-shadow-lg">
-                  Klik untuk melihat lebih detail
-                </p>
-              </div>
+              <div className="absolute bottom-6 left-6 right-6 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0"></div>
             </div>
           </div>
         </div>

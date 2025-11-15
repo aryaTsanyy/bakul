@@ -1,5 +1,5 @@
 import { Geist, Geist_Mono } from "next/font/google";
-import DirectorySection from "./Directory/DirectorySection";
+import DirectorySection from "@/components/Directory/DirectorySection";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

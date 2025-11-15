@@ -1,13 +1,34 @@
 import { useRouter } from "next/router";
-import React, { useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Link from "next/link";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/dist/ScrollTrigger";
+import { ScrollSmoother } from "gsap/dist/ScrollSmoother";
 
-const Navbar = () => {
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+}
+
+interface NavbarProps {
+  onNavigate?: (sectionId: string) => void;
+  smootherRef?: React.RefObject<ScrollSmoother | null>;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ smootherRef }) => {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isClient, setIsClient] = useState(false);
 
-  // Close menu when screen size changes
+  const navbarRef = useRef<HTMLElement>(null);
+  const lastScrollY = useRef(0);
+  const ticking = useRef(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 640) {
@@ -18,11 +39,51 @@ const Navbar = () => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!ticking.current) {
+        window.requestAnimationFrame(() => {
+          const currentScrollY = window.scrollY;
+          const scrollDifference = currentScrollY - lastScrollY.current;
+          setIsScrolled(currentScrollY > 50);
+          if (navbarRef.current) {
+            if (scrollDifference > 10 && currentScrollY > 100) {
+              gsap.to(navbarRef.current, {
+                y: -120,
+                duration: 0.8,
+                ease: "power2.out",
+                overwrite: "auto",
+              });
+            } else if (scrollDifference < -5) {
+              gsap.to(navbarRef.current, {
+                y: 0,
+                duration: 0.8,
+                ease: "power2.out",
+                overwrite: "auto",
+              });
+            }
+          }
+          lastScrollY.current = currentScrollY;
+          ticking.current = false;
+        });
+        ticking.current = true;
+      }
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const handleToggle = () => {
     setIsOpen(!isOpen);
     if (!isOpen) {
       setSearchQuery("");
+    }
+    if (navbarRef.current && !isOpen) {
+      gsap.to(navbarRef.current, {
+        y: 0,
+        duration: 0.3,
+        ease: "power2.out",
+      });
     }
   };
 
@@ -38,17 +99,62 @@ const Navbar = () => {
   };
 
   const handleNavigate = (path: string) => {
-    router.push(path);
+    if (navbarRef.current) {
+      gsap.to(navbarRef.current, {
+        y: 0,
+        duration: 0.3,
+        ease: "power2.out",
+      });
+    }
+    if (path.startsWith("#")) {
+      const sectionId = path.substring(1);
+      if (router.pathname === "/") {
+        if (smootherRef && smootherRef.current) {
+          smootherRef.current.scrollTo("#" + sectionId, true, "center center");
+        } else {
+          const section = document.getElementById(sectionId);
+          if (section) {
+            const navbarHeight = 80;
+            const targetPosition = section.offsetTop - navbarHeight;
+            window.scrollTo({
+              top: targetPosition,
+              behavior: "smooth",
+            });
+          }
+        }
+      } else {
+        router.push("/" + path);
+      }
+    } else {
+      router.push(path);
+    }
     setIsOpen(false);
   };
+  const dynamicIsScrolled = isClient && isScrolled;
 
   return (
     <>
-      <nav className="bg-transparent w-full fixed top-0 left-0 z-50 font-geist-mono">
-        <div className="mx-auto py-3 px-6 md:py-5 md:px-6 lg:px-10">
+      <nav
+        ref={navbarRef}
+        className="bg-transparent w-full fixed top-0 left-0 z-50 font-geist-mono"
+        style={{
+          paddingLeft: dynamicIsScrolled ? "2rem" : "1rem",
+          paddingRight: dynamicIsScrolled ? "2rem" : "1rem",
+        }}
+      >
+        <div
+          className={`mx-auto transition-all duration-500 ${
+            dynamicIsScrolled
+              ? "py-2 px-4 md:py-3 md:px-6 lg:px-12"
+              : "py-3 px-6 md:py-5 md:px-6 lg:px-10"
+          }`}
+        >
           <div className="flex items-center justify-between h-14 md:h-20">
             {/* Logo */}
-            <div className="flex-shrink-0 flex items-center p-2 md:p-3 rounded-full bg-[#fefffb] hover:scale-105 transition-transform duration-200">
+            <Link
+              href="/"
+              className="flex-shrink-0 flex items-center p-2 md:p-3 rounded-full bg-transparent hover:scale-105 transition-transform duration-200"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="w-8 h-8 md:w-12 md:h-12"
@@ -67,7 +173,7 @@ const Navbar = () => {
                   </clipPath>
                 </defs>
               </svg>
-            </div>
+            </Link>
 
             {/* Desktop/Tablet */}
             <div className="hidden bg-white shadow-lg p-2.5 rounded-full sm:flex items-center gap-3 md:gap-2">
@@ -80,8 +186,8 @@ const Navbar = () => {
                 }`}
               >
                 <div className="flex items-center gap-2 px-4 py-3 md:gap-3 md:px-5 md:py-3.5 lg:gap-4 lg:pl-6 lg:pr-2 whitespace-nowrap">
-                  <button
-                    onClick={() => handleNavigate("/")}
+                  <Link
+                    href="/"
                     className="relative text-gray-700 font-medium text-xs md:text-sm lg:text-base transition-all duration-300 overflow-hidden group px-2 py-1 transform"
                     style={{ perspective: "100px" }}
                   >
@@ -97,7 +203,7 @@ const Navbar = () => {
                     >
                       BERANDA
                     </span>
-                  </button>
+                  </Link>
 
                   <Link
                     href="/directory"
@@ -117,8 +223,12 @@ const Navbar = () => {
                       UMKM
                     </span>
                   </Link>
-                  <button
-                    onClick={() => handleNavigate("#maps")}
+                  <a
+                    href="#maps"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleNavigate("#maps");
+                    }}
                     className="relative text-gray-700 font-medium text-xs md:text-sm lg:text-base transition-all duration-300 overflow-hidden group px-2 py-1 transform"
                     style={{ perspective: "100px" }}
                   >
@@ -134,7 +244,7 @@ const Navbar = () => {
                     >
                       PETA
                     </span>
-                  </button>
+                  </a>
                 </div>
               </div>
 
@@ -224,7 +334,7 @@ const Navbar = () => {
                 ) : (
                   <button
                     onClick={handleToggle}
-                    className="primary-button cursor-text px-6 py-3 md:px-8 md:py-3.5 lg:px-10 lg:py-4 rounded-full hover:scale-105 active:scale-95 transition-all duration-400 flex items-center gap-2 md:gap-3 pointer-events-auto"
+                    className="bg-[#2A9DF4] cursor-text px-6 py-3 md:px-8 md:py-3.5 lg:px-10 lg:py-4 rounded-full hover:scale-105 active:scale-95 transition-all duration-400 flex items-center gap-2 md:gap-3 pointer-events-auto"
                     aria-label="Search"
                   >
                     <span className="font-bold text-white tracking-wide text-xs md:text-sm lg:text-base">
@@ -274,24 +384,30 @@ const Navbar = () => {
         >
           <div className="bg-white mx-4 rounded-2xl shadow-xl mb-4 overflow-hidden">
             <div className="px-4 py-3 space-y-1">
-              <button
-                onClick={() => handleNavigate("/")}
+              <Link
+                href="/"
+                onClick={() => setIsOpen(false)}
                 className="w-full text-left px-3 py-2.5 text-gray-700 hover:bg-gray-50 rounded-lg font-medium text-sm transition-colors duration-200 active:scale-95"
               >
                 BERANDA
-              </button>
-              <button
-                onClick={() => handleNavigate("/Directory")}
+              </Link>
+              <Link
+                href="/directory"
+                onClick={() => setIsOpen(false)}
                 className="w-full text-left px-3 py-2.5 text-gray-700 hover:bg-gray-50 rounded-lg font-medium text-sm transition-colors duration-200 active:scale-95"
               >
                 UMKM
-              </button>
-              <button
-                onClick={() => handleNavigate("#maps")}
+              </Link>
+              <a
+                href="#maps"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavigate("#maps");
+                }}
                 className="w-full text-left px-3 py-2.5 text-gray-700 hover:bg-gray-50 rounded-lg font-medium text-sm transition-colors duration-200 active:scale-95"
               >
                 PETA
-              </button>
+              </a>
             </div>
 
             {/* Mobile Search */}

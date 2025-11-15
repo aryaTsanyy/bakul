@@ -57,7 +57,7 @@ const Footer: React.FC<FooterProps> = ({
   };
 
   return (
-    <footer className="bg-[#13569C] text-white">
+    <footer className="bg-[#13569C] text-white h-[620px] relative z-5">
       <div className="w-full h-full mx-auto flex flex-col items-stretch">
         {/* Mobile Layout */}
         <div className="lg:hidden">

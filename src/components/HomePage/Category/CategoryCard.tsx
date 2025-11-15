@@ -40,11 +40,11 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ category, index }) => {
     >
       {/* wrap clickable area with Link -> navigasi ke pageListUmkm dengan query */}
       <Link
-        href={`/Directory?category=${encodeURIComponent(category.title)}`}
+        href={`/directory?category=${encodeURIComponent(category.title)}`}
         className="block"
         aria-label={`Lihat UMKM kategori ${category.title}`}
       >
-        <div className="relative rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-7 lg:p-8 h-60 sm:h-64 md:h-72 lg:h-80 transition-all duration-500 ease-out cursor-pointer sm:bg-white md:bg-white lg:bg-white bg-[#2a9df4] hover:bg-[#2a9df4] shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-2">
+        <div className="relative rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-7 lg:p-8 h-60 sm:h-64 md:h-72 lg:h-80 transition-all duration-500 ease-out cursor-pointer sm:bg-white md:bg-white lg:bg-white bg-[#2a9df4] hover:bg-[#2a9df4] shadow-md hover:shadow-2xl hover:scale-105 hover:-translate-y-2 overflow-hidden">
           {/* Background Decorative Elements */}
           <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
             <div className="absolute top-0 right-0 w-32 sm:w-36 md:w-40 h-32 sm:h-36 md:h-40 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-2xl"></div>

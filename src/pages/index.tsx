@@ -1,5 +1,11 @@
 import { Geist, Geist_Mono } from "next/font/google";
-import HomeSection from "./HomePage/HomeSection";
+import HomeSection from "@/components/HomePage/HomeSection";
+import { useGSAP } from "@gsap/react";
+import { gsap, ScrollTrigger, ScrollSmoother } from "@/lib/gsap";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger, ScrollSmoother, useGSAP);
+}
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

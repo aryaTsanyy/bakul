@@ -1,6 +1,5 @@
 import React from "react";
 import type { Umkm } from "@/pages/api/umkm";
-import Navbar from "@/components/layout/navbar";
 import OverviewSection from "@/components/DetailPage/Overview/OverviewSection";
 import StorySection from "@/components/DetailPage/Story/StorySection";
 import GallerySection from "@/components/DetailPage/galleryUmkm/GallerySection";
@@ -13,18 +12,9 @@ interface UMKMDetailPageProps {
 const UMKMDetailPage: React.FC<UMKMDetailPageProps> = ({ umkm }) => {
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header with Back Button */}
-      <Navbar />
-      {/* Hero Section with Image Gallery */}
       <OverviewSection umkm={umkm} />
-
-      {/* Story Section */}
       <StorySection umkm={umkm} />
-
-      {/* Gallery Section */}
       <GallerySection photos={umkm.photos} title="LIHAT, KENALI, DUKUNG" />
-
-      {/* Products & Services */}
       <div className="bg-white mt-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <h2 className="text-2xl font-bold text-gray-900 mb-6">

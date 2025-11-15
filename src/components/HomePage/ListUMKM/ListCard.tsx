@@ -63,7 +63,7 @@ const ListCard: React.FC<UMKMCardProps> = ({ umkm, index }) => {
         <div className="flex flex-col-reverse sm:flex-row items-start sm:items-center md:items-center lg:items-center gap-4 sm:gap-6 md:gap-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 p-4 sm:p-0">
           {/* Content */}
           <div className="flex-1 py-2 relative overflow-hidden w-full">
-            <h3 className="font-anton text-2xl sm:text-2xl md:text-3xl font-normal text-[#161D04] mb-3 sm:mb-4 group-hover:text-[#13569C] transition-colors duration-500 line-clamp-2">
+            <h3 className="font-anton text-2xl sm:text-2xl md:text-3xl font-normal text-[#161D04] mb-3 sm:mb-4 group-hover:text-[#2A9DF4] transition-colors duration-500 line-clamp-2">
               {umkm.name}
             </h3>
             <p className="text-[#515151] font-geist-mono text-sm sm:text-base leading-relaxed mb-4 sm:mb-6 md:mb-8 line-clamp-3 sm:line-clamp-3">
@@ -134,7 +134,7 @@ const ListCard: React.FC<UMKMCardProps> = ({ umkm, index }) => {
           </Link>
         </div>
       </div>
-      <div className="w-full h-[2px] rounded-full bg-[#e2e2e280]"></div>
+      <div className="w-full h-[2px] rounded-full bg-[#e2e2e2]"></div>
     </div>
   );
 };

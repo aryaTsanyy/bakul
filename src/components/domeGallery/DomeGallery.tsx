@@ -162,10 +162,10 @@ export default function DomeGallery({
   enlargeTransitionMs = DEFAULTS.enlargeTransitionMs,
   segments = DEFAULTS.segments,
   dragDampening = 2,
-  openedImageWidth = "400", //400
-  openedImageHeight = "400", //400
-  imageBorderRadius = "30px", //30
-  openedImageBorderRadius = "30px", //30
+  openedImageWidth = "400",
+  openedImageHeight = "400",
+  imageBorderRadius = "30px",
+  openedImageBorderRadius = "30px",
   grayscale = false,
 }: DomeGalleryProps) {
   const rootRef = useRef<HTMLDivElement>(null);
@@ -809,7 +809,7 @@ export default function DomeGallery({
       }
       .sphere-root {
         --viewer-pad: 60px;
-        height: 70vh !important;
+        height: 90vh !important;
       }
     }
 
