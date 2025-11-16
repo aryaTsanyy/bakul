@@ -1,40 +1,87 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# Bakul - Direktori UMKM Purwokerto
 
-## Getting Started
+"Bakul" (Basis Aktivitas UMKM Lokal) adalah sebuah platform direktori digital yang didedikasikan untuk memetakan dan mempromosikan Usaha Mikro, Kecil, dan Menengah (UMKM) yang ada di area Purwokerto.
 
-First, run the development server:
+Project ini dibuat menggunakan Next.js (Pages Router) dan menampilkan berbagai animasi canggih menggunakan GSAP.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🌐 Demo Langsung (Live Demo)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Anda dapat melihat versi _live_ dari project ini di:
+**[https://pwt-umkm.vercel.app/](https://pwt-umkm.vercel.app/)**
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+---
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## ✨ Fitur Utama
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+- **Direktori UMKM:** Daftar UMKM yang dapat difilter dan memiliki paginasi.
+- **Halaman Detail Dinamis:** Setiap UMKM memiliki halaman detail _server-side_ (`getStaticProps` & `getStaticPaths`).
+- **Cool Animation:** Dibuat dengan GSAP, termasuk:
+- **Kursor Kustom:** Efek kursor "jelly" yang interaktif.
+- **Desain Responsif:** Tampilan yang dioptimalkan untuk desktop dan perangkat seluler.
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 📸 Pratinjau (Preview)
 
-To learn more about Next.js, take a look at the following resources:
+Berikut adalah beberapa tampilan dari aplikasi "Bakul".
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+|                 Halaman Utama (Homepage)                  |                       Halaman Direktori                       |                     Halaman Detail                      |
+| :-------------------------------------------------------: | :-----------------------------------------------------------: | :-----------------------------------------------------: |
+| ![Tampilan Halaman Utama Bakul](screenshots/HomePage.png) | ![Tampilan Halaman Direktori UMKM](screenshots/Directory.png) | ![Tampilan Halaman Detail UMKM](screenshots/Detail.png) |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🥞 Tumpukan Teknologi (Tech Stack)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Framework:** [Next.js](https://nextjs.org/) (Pages Router)
+- **Bahasa:** [TypeScript](https://www.typescriptlang.org/)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+- **Animasi:** [GSAP (GreenSock Animation Platform)](https://gsap.com/)
+- **Hosting:** [Vercel](https://vercel.com/)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+---
+
+## 🚀 Cara Menjalankan Project Secara Lokal
+
+Berikut adalah cara untuk meng-clone dan menjalankan project ini di komputer lokal Anda untuk pengembangan.
+
+1.  **Clone repository ini:**
+
+    ```bash
+    git clone [https://github.com/username-anda/nama-repo-anda.git](https://github.com/username-anda/nama-repo-anda.git)
+    ```
+
+    _(Ganti URL di atas dengan URL repository GitHub Anda)_
+
+2.  **Masuk ke direktori project:**
+
+    ```bash
+    cd nama-repo-anda
+    ```
+
+3.  **Install dependencies (dependensi):**
+    (Gunakan `npm` atau `yarn` sesuai preferensi Anda)
+
+    ```bash
+    npm install
+    ```
+
+    atau
+
+    ```bash
+    yarn install
+    ```
+
+4.  **Jalankan server development:**
+
+    ```bash
+    npm run dev
+    ```
+
+    atau
+
+    ```bash
+    yarn dev
+    ```
+
+5.  Buka [http://localhost:3000](http://localhost:3000) di browser Anda untuk melihat hasilnya.
