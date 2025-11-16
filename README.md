@@ -25,9 +25,9 @@ Anda dapat melihat versi _live_ dari project ini di:
 
 Berikut adalah beberapa tampilan dari aplikasi "Bakul".
 
-|                 Halaman Utama (Homepage)                  |                       Halaman Direktori                       |                     Halaman Detail                      |
-| :-------------------------------------------------------: | :-----------------------------------------------------------: | :-----------------------------------------------------: |
-| ![Tampilan Halaman Utama Bakul](screenshots/HomePage.png) | ![Tampilan Halaman Direktori UMKM](screenshots/Directory.png) | ![Tampilan Halaman Detail UMKM](screenshots/Detail.png) |
+|                  Halaman Utama (Homepage)                  |                       Halaman Direktori                        |                      Halaman Detail                      |
+| :--------------------------------------------------------: | :------------------------------------------------------------: | :------------------------------------------------------: |
+| ![Tampilan Halaman Utama Bakul](/Screenshots/HomePage.png) | ![Tampilan Halaman Direktori UMKM](/Screenshots/Directory.png) | ![Tampilan Halaman Detail UMKM](/Screenshots/Detail.png) |
 
 ---
 
@@ -48,7 +48,7 @@ Berikut adalah cara untuk meng-clone dan menjalankan project ini di komputer lok
 1.  **Clone repository ini:**
 
     ```bash
-    git clone [https://github.com/username-anda/nama-repo-anda.git](https://github.com/username-anda/nama-repo-anda.git)
+    git clone [https://github.com/aryaTsanyy/bakul.git](https://github.com/aryaTsanyy/bakul.git)
     ```
 
     _(Ganti URL di atas dengan URL repository GitHub Anda)_
