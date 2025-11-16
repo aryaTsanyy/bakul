@@ -31,9 +31,9 @@ const Footer: React.FC<FooterProps> = ({
   },
   submitButtonText = "SUBMIT",
   navigationLinks = [
-    { label: "BERANDA", href: "#home" },
-    { label: "UMKM", href: "#about" },
-    { label: "PETA", href: "#products" },
+    { label: "BERANDA", href: "/" },
+    { label: "UMKM", href: "/directory" },
+    { label: "PETA", href: "#maps" },
   ],
   onSubmit,
 }) => {
@@ -48,7 +48,6 @@ const Footer: React.FC<FooterProps> = ({
     if (onSubmit) {
       onSubmit(formData);
     }
-    // Reset form
     setFormData({ firstName: "", lastName: "", email: "" });
   };
 

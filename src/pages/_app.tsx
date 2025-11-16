@@ -8,7 +8,7 @@ import SmoothScroll from "@/components/scrolls/SmoothScroll";
 const ElasticCursor = dynamic(
   () => import("@/components/cursor/ElasticCursor"),
   {
-    ssr: false, // Disable server-side rendering
+    ssr: false,
   }
 );
 
@@ -37,6 +37,7 @@ export default function App({ Component, pageProps }: AppProps) {
           name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=5"
         />
+        <link rel="icon" href="/Icon.svg" type="image/svg+xml" />
       </Head>
       <div
         className={`${anton.variable} ${inter.variable} ${geistMono.variable}`}

@@ -23,7 +23,7 @@ const HomeSection = () => {
         pin: true,
         start: "top top",
         end: "+=500",
-        markers: true,
+        markers: false,
       });
       gsap.from(".fade-in", {
         scrollTrigger: {
@@ -31,6 +31,7 @@ const HomeSection = () => {
           start: "top 80%",
           end: "top 50%",
           scrub: 1,
+          markers: false,
         },
         opacity: 0,
         y: 100,
@@ -53,15 +54,15 @@ const HomeSection = () => {
       gsap.set(footerSelector, { yPercent: -50 });
 
       gsap.to(footerSelector, {
-        yPercent: 0, // Animasikan kembali ke 0 (geser ke BAWAH)
+        yPercent: 0,
         ease: "none",
         scrollTrigger: {
-          trigger: spacerSelector, // 3. Trigger adalah spacer
-          start: "top bottom", // Saat atas spacer kena bawah layar
-          end: "bottom bottom", // Saat bawah spacer kena bawah layar
+          trigger: spacerSelector,
+          start: "top bottom",
+          end: "bottom bottom",
           scrub: true,
           invalidateOnRefresh: true,
-          // markers: true,
+          markers: false,
         },
       });
     },

@@ -11,7 +11,7 @@ const TestimonialSection = () => {
     setIsTyping(true);
     setDisplayedText("");
 
-    const currentFeedback = testimonialList[activeIndex].feedback;
+    const currentFeedback = testimonialList[activeIndex].komentar;
     let currentIndex = 0;
 
     const typingInterval = setInterval(() => {
@@ -66,7 +66,7 @@ const TestimonialSection = () => {
                   <Image
                     width={80}
                     height={80}
-                    src={testimonial.image}
+                    src={testimonial.imageOwner}
                     alt={testimonial.name}
                     className="w-full h-full object-cover"
                   />

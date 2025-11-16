@@ -21,6 +21,13 @@ export interface Review {
   comment: string;
   date: string;
 }
+export interface testimonialsDummy {
+  id: string;
+  nama: string;
+  jabatan: string;
+  imageOwner: string;
+  komentar: string;
+}
 
 // Location Data
 export interface LocationData {
@@ -41,7 +48,7 @@ export interface Umkm {
   story?: string;
   searchKeywords: string[];
   averageRating: number;
-  /* reviews: Review[]; */
+  testimonials: testimonialsDummy[];
   address: string;
   phone: string;
   instagram: string;
@@ -55,6 +62,6 @@ export interface Testimonial {
   id: number;
   name: string;
   business: string;
-  image: string;
-  feedback: string;
+  imageOwner: string;
+  komentar: string;
 }

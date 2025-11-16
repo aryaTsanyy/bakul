@@ -49,6 +49,16 @@ export const umkmList: Umkm[] = [
       "/UMKM/Link/Content-5.jpg",
       "/UMKM/Link/Content-6.jpg",
     ],
+    testimonials: [
+      {
+        id: "t1-1",
+        nama: "Bima Sakti",
+        jabatan: "Pemilik Link Coffee",
+        imageOwner: "UMKM/owner3.png",
+        komentar:
+          "Habis cukur, langsung ngopi. Potongannya rapi banget, kopinya mantap. Hemat waktu buat mahasiswa.",
+      },
+    ],
   },
   {
     id: 2,
@@ -84,6 +94,7 @@ export const umkmList: Umkm[] = [
     ],
     photos: [
       "/UMKM/Patawi/Patawi.png",
+      "/UMKM/Patawi/Content-4.jpg",
       "/UMKM/Patawi/Content-5.jpg",
       "/UMKM/Patawi/Content-1.jpg",
       "/UMKM/Patawi/Content-2.jpg",
@@ -91,6 +102,16 @@ export const umkmList: Umkm[] = [
       "/UMKM/Patawi/Content-3.jpg",
       "/UMKM/Patawi/Content-6.jpg",
       "/UMKM/Patawi/Content-7.jpg",
+    ],
+    testimonials: [
+      {
+        id: "t2-1",
+        nama: "Hendra Wijaya",
+        jabatan: "Brand Manager Patawi",
+        imageOwner: "/UMKM/owner2.png",
+        komentar:
+          "Beli beans Robusta-nya buat di rumah. Sumpah, ini *the real coffee*. Nendang banget aromanya. Gak salah pilih.",
+      },
     ],
   },
   {
@@ -137,6 +158,16 @@ export const umkmList: Umkm[] = [
       "/UMKM/Utomo/Content-3.jpg",
       "/UMKM/Utomo/Content-6.jpg",
     ],
+    testimonials: [
+      {
+        id: "t3-1",
+        nama: "Catur",
+        jabatan: "Pemilik Utomo",
+        imageOwner: "/UMKM/Utomo/AdiCatur.jpg",
+        komentar:
+          "Surga buat yang suka filter coffee. Pilihan beans-nya banyak dan *freshly roasted*. Suasananya homy, betah banget.",
+      },
+    ],
   },
   {
     id: 4,
@@ -181,6 +212,16 @@ export const umkmList: Umkm[] = [
       "/UMKM/EtAl/Content-5.jpg",
       "/UMKM/EtAl/Content-6.jpg",
     ],
+    testimonials: [
+      {
+        id: "t4-1",
+        nama: "Citra & Geng",
+        jabatan: "Managers Et - Al",
+        imageOwner: "/UMKM/owner1.png",
+        komentar:
+          "Kopinya enak, tapi *photobox*-nya sih yang bikin balik lagi! Hasilnya lucu-lucu. Tempatnya juga estetik banget.",
+      },
+    ],
   },
   {
     id: 5,
@@ -222,6 +263,16 @@ export const umkmList: Umkm[] = [
       "/UMKM/PotaraStudio/Content-4.jpeg",
       "/UMKM/PotaraStudio/Content-5.jpeg",
       "/UMKM/PotaraStudio/Content-6.jpeg",
+    ],
+    testimonials: [
+      {
+        id: "t5-1",
+        nama: "Alif",
+        jabatan: "Founder",
+        imageOwner: "/UMKM/PotaraStudio/Alif.jpeg",
+        komentar:
+          "Percaya penuh sama Potara buat *brand identity* usaha saya. Hasilnya di luar ekspektasi. Profesional dan kreatif banget!",
+      },
     ],
   },
   {
@@ -266,6 +317,16 @@ export const umkmList: Umkm[] = [
       "/UMKM/NasiGoreng/Content-1.jpg",
       "/UMKM/NasiGoreng/Content-1.jpg",
       "/UMKM/NasiGoreng/Content-1.jpg",
+    ],
+    testimonials: [
+      {
+        id: "t6-1",
+        nama: "Mas Agung",
+        jabatan: "Pemilik Nasi Goreng Tambak Batu",
+        imageOwner: "/UMKM/owner2.png",
+        komentar:
+          "Ini dia! Nasi goreng *smokey* paling mantap di Tambak Batu. Porsinya kuli, harganya mahasiswa. Gak pernah ngecewain.",
+      },
     ],
   },
   {
@@ -312,6 +373,16 @@ export const umkmList: Umkm[] = [
       "/UMKM/Stopper/Stopper.jpg",
       "/UMKM/Stopper/Stopper.jpg",
     ],
+    testimonials: [
+      {
+        id: "t7-1",
+        nama: "Vina",
+        jabatan: "Pemilik Stopper Parfume",
+        imageOwner: "/UMKM/Stopper/owner1.png",
+        komentar:
+          "Koleksinya gila, lengkap banget. Mau cari aroma apa aja ada. Harganya juga jujur. Langganan dari dulu.",
+      },
+    ],
   },
   {
     id: 8,
@@ -356,6 +427,16 @@ export const umkmList: Umkm[] = [
       "/UMKM/narasmall/Content-5.jpg",
       "/UMKM/narasmall/Content-6.jpg",
     ],
+    testimonials: [
+      {
+        id: "t8-1",
+        nama: "Keiko",
+        jabatan: "Pemilik Nara Small Bar",
+        imageOwner: "/UMKM/narasmall/owner.jpg",
+        komentar:
+          "Sebagai *matcha snob*, saya akui Nara punya salah satu matcha terbaik di PWT. *Pure*, gak kemanisan, *earthy*-nya dapet.",
+      },
+    ],
   },
   {
     id: 9,
@@ -398,6 +479,16 @@ export const umkmList: Umkm[] = [
       "/UMKM/Eco/Content-4.jpg",
       "/UMKM/Eco/Content-5.jpg",
       "/UMKM/Eco/Content-6.jpg",
+    ],
+    testimonials: [
+      {
+        id: "t9-1",
+        nama: "Diana",
+        jabatan: "Pemilik Eco 21",
+        imageOwner: "/UMKM/owner3.png",
+        komentar:
+          "Seneng banget ada toko oleh-oleh yang peduli lingkungan. Kemasannya *eco-friendly*. Beli Getuk Goreng jadi gak ngerasa bersalah.",
+      },
     ],
   },
   {
@@ -444,6 +535,24 @@ export const umkmList: Umkm[] = [
       "/UMKM/Suluk/Content-5.JPG",
       "/UMKM/Suluk/Content-6.JPG",
     ],
+    testimonials: [
+      {
+        id: "t10-1",
+        nama: "Herman",
+        jabatan: "Pemilik Suluk",
+        imageOwner: "/UMKM/owner2.png",
+        komentar:
+          "Konsepnya unik banget, pagi-pagi sarapan pecel lontong sambil ngopi tubruk. Sambel pecelnya medok, kopinya mantap.",
+      },
+      {
+        id: "t10-2",
+        nama: "Gilang",
+        jabatan: "Budayawan Lokal",
+        imageOwner: "/UMKM/Suluk/Suluk.png",
+        komentar:
+          "Suasana pendoponya adem, bikin betah. Beneran *ngrasuk* rasanya. Mendoannya juga enak, anget terus.",
+      },
+    ],
   },
   {
     id: 11,
@@ -477,5 +586,15 @@ export const umkmList: Umkm[] = [
       { name: "Es Teler Alpukat Kocok" },
     ],
     photos: ["/UMKM/EsCreamy/CakW.JPG", "/UMKM/EsCreamy/Highlight.JPG"],
+    testimonials: [
+      {
+        id: "t11-1",
+        nama: "Retno",
+        jabatan: "Pemilik Usaha",
+        imageOwner: "/UMKM/owner2.png",
+        komentar:
+          "Awalnya aneh, es teler kok pake cakwe? Pas dicoba, gila! Nyambung banget. *Creamy*-nya pas, cakwenya nambah tekstur.",
+      },
+    ],
   },
 ];

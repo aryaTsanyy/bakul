@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-// Types
 interface UMKM {
   id: number;
   slug: string;
@@ -19,7 +18,6 @@ interface UMKMCardProps {
   index: number;
 }
 
-// UMKMCard Component (Reusable)
 const ListCard: React.FC<UMKMCardProps> = ({ umkm, index }) => {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -74,7 +72,7 @@ const ListCard: React.FC<UMKMCardProps> = ({ umkm, index }) => {
             <div className="flex flex-wrap items-center gap-2 sm:gap-3 relative min-h-[44px]">
               <div className="flex items-center gap-2 sm:gap-3">
                 <Link
-                  href={`/umkm/${umkm.slug}`}
+                  href={`/${umkm.slug}`}
                   className={`inline-block transition-all duration-500 ease-out ${
                     isHovered
                       ? "opacity-100 translate-x-0"

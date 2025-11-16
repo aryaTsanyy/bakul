@@ -10,7 +10,6 @@ import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import { createCategoryIcon } from "@/pages/api/mapIcon";
 
-// Definisikan tipe props yang diterima
 interface MapDataItem {
   lat: number;
   lng: number;
@@ -24,9 +23,6 @@ interface UMKMMapProps {
   center: [number, number];
 }
 
-// ----------------------------------------------------------------------
-// Komponen Helper: Mengatur Ulang Peta (Untuk Zoom dan Center Otomatis)
-// ----------------------------------------------------------------------
 const MapRecenter = ({ center }: { center: [number, number] }) => {
   const map = useMap();
   useEffect(() => {
@@ -53,7 +49,6 @@ const MapInitializer = ({
 
   return null;
 };
-// ----------------------------------------------------------------------
 
 const UMKMMap: React.FC<UMKMMapProps> = ({ data, center }) => {
   const mapRef = useRef<L.Map | null>(null);
@@ -84,7 +79,6 @@ const UMKMMap: React.FC<UMKMMapProps> = ({ data, center }) => {
 
     setIsLoading(true);
 
-    // Simulasi async loading dengan setTimeout
     setTimeout(() => {
       const start = currentPage * ITEMS_PER_PAGE;
       const end = start + ITEMS_PER_PAGE;
@@ -96,7 +90,6 @@ const UMKMMap: React.FC<UMKMMapProps> = ({ data, center }) => {
     }, 300);
   }, [currentPage, data, visibleMarkers.length, isLoading]);
 
-  // Handle map ready event
   const handleWhenReady = useCallback((map: L.Map) => {
     mapRef.current = map;
     setBounds(map.getBounds());
@@ -106,8 +99,6 @@ const UMKMMap: React.FC<UMKMMapProps> = ({ data, center }) => {
     if (!mapRef.current || isLoading) return;
 
     const currentZoom = mapRef.current.getZoom();
-
-    // Load more markers saat user zoom out
     if (
       currentZoom < LOAD_ON_ZOOM_THRESHOLD &&
       visibleMarkers.length < data.length
@@ -139,7 +130,6 @@ const UMKMMap: React.FC<UMKMMapProps> = ({ data, center }) => {
         className="h-[500px] w-full rounded-xl shadow-lg border-2 border-gray-100"
         style={{ zIndex: 1 }}
       >
-        {/* Ini memungkinkan peta untuk diatur ulang saat props center/data berubah */}
         <MapRecenter center={center} />
         <MapInitializer
           onMapReady={handleWhenReady}
@@ -147,7 +137,6 @@ const UMKMMap: React.FC<UMKMMapProps> = ({ data, center }) => {
           onMoveEnd={handleMoveEnd}
         />
 
-        {/* Styling Peta (TileLayer): Gunakan style yang lebih modern/bersih */}
         <TileLayer
           url="https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png"
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'

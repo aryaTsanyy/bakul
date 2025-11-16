@@ -64,7 +64,7 @@ const ListSection = () => {
                 di balik usahanya.
               </p>
 
-              <CircleExpandButton href="/Directory" className="max-w-[210px]" />
+              <CircleExpandButton href="/directory" className="max-w-[210px]" />
             </div>
           </div>
 

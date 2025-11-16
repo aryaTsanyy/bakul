@@ -3,6 +3,9 @@ import type { Umkm } from "@/pages/api/umkm";
 import OverviewSection from "@/components/DetailPage/Overview/OverviewSection";
 import StorySection from "@/components/DetailPage/Story/StorySection";
 import GallerySection from "@/components/DetailPage/galleryUmkm/GallerySection";
+import TestiSection from "@/components/DetailPage/Testimonial/TestiSection";
+import CategoryDetail from "@/components/DetailPage/Category/CategoryDetail";
+import UmkmSuggestions from "@/components/DetailPage/Suggest/Suggestcard";
 
 // Interface untuk props
 interface UMKMDetailPageProps {
@@ -11,10 +14,13 @@ interface UMKMDetailPageProps {
 
 const UMKMDetailPage: React.FC<UMKMDetailPageProps> = ({ umkm }) => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="h-full bg-gray-50">
       <OverviewSection umkm={umkm} />
       <StorySection umkm={umkm} />
       <GallerySection photos={umkm.photos} title="LIHAT, KENALI, DUKUNG" />
+      {umkm.testimonials && umkm.testimonials.length > 0 && (
+        <TestiSection testimonials={umkm.testimonials} />
+      )}
       <div className="bg-white mt-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <h2 className="text-2xl font-bold text-gray-900 mb-6">
@@ -51,6 +57,12 @@ const UMKMDetailPage: React.FC<UMKMDetailPageProps> = ({ umkm }) => {
           </div>
         </div>
       </div>
+      <CategoryDetail />
+      <UmkmSuggestions
+        currentSlug={umkm.slug} // Kirim slug saat ini agar tidak muncul lagi
+        category={umkm.categories[0]} // Kirim kategori pertama untuk mencari yg relevan
+        limit={3} // Tampilkan 3 sugesti
+      />
     </div>
   );
 };
