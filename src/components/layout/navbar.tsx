@@ -91,7 +91,7 @@ const Navbar: React.FC<NavbarProps> = ({ smootherRef }) => {
     e.preventDefault();
     if (searchQuery.trim()) {
       router.push(
-        `/Directory?search=${encodeURIComponent(searchQuery.trim())}`
+        `/directory?search=${encodeURIComponent(searchQuery.trim())}`
       );
       setIsOpen(false);
       setSearchQuery("");
