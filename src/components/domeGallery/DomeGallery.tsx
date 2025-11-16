@@ -43,7 +43,7 @@ const DEFAULT_IMAGES: ImageItem[] = [
     alt: "Modern sculpture",
   },
   {
-    src: "/UMKM/Utomo/Highlight.png",
+    src: "/UMKM/Utomo/UtomoHouse.jpeg",
     alt: "Digital artwork",
   },
   {
