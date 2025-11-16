@@ -54,7 +54,7 @@ export const umkmList: Umkm[] = [
         id: "t1-1",
         nama: "Bima Sakti",
         jabatan: "Pemilik Link Coffee",
-        imageOwner: "UMKM/owner3.png",
+        imageOwner: "/UMKM/owner3.png",
         komentar:
           "Habis cukur, langsung ngopi. Potongannya rapi banget, kopinya mantap. Hemat waktu buat mahasiswa.",
       },

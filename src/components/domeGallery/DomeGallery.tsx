@@ -35,15 +35,15 @@ type ItemDef = {
 
 const DEFAULT_IMAGES: ImageItem[] = [
   {
-    src: "/UMKM/ListUmkm.png",
+    src: "/UMKM/PotaraStudio/Potara.jpg",
     alt: "Abstract art",
   },
   {
-    src: "/UMKM/CNB.jpeg",
+    src: "/UMKM/narasmall/Narasm.jpg",
     alt: "Modern sculpture",
   },
   {
-    src: "/UMKM/Utomo/UtomoHouse.jpeg",
+    src: "/UMKM/Utomo/Highlight.png",
     alt: "Digital artwork",
   },
   {
@@ -59,7 +59,7 @@ const DEFAULT_IMAGES: ImageItem[] = [
     alt: "Textured surface",
   },
   {
-    src: "/UMKM/ListUmkm.png",
+    src: "/UMKM/EtAl/et-al.jpg",
     alt: "Social media image",
   },
 ];

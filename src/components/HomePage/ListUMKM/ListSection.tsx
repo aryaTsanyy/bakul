@@ -54,7 +54,7 @@ const ListSection = () => {
               </p>
             </div>
             <div className="lg:sticky lg:top-24">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-5xl font-black text-[#081F36] mb-4 sm:mb-5 lg:mb-6 leading-tight max-w-full lg:max-w-[90%]">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-5xl font-anton font-normal tracking-[-2%] text-[#081F36] mb-4 sm:mb-5 lg:mb-6 leading-tight max-w-full lg:max-w-[90%]">
                 MENJADI WADAH BAGI UMKM TERBAIK NEGERI
               </h2>
 

@@ -127,7 +127,7 @@ const UMKMPage = () => {
   const clearSearch = () => {
     setSearchQuery("");
     setSearchDefault("");
-    router.push("/Directory", undefined, { shallow: true });
+    router.push("/directory", undefined, { shallow: true });
   };
 
   const hasMoreData = displayedCount < filteredData.length;
@@ -397,7 +397,7 @@ const UMKMPage = () => {
       </div>
 
       {showFilterModal && (
-        <div className="fixed inset-0 bg-black/50 z-50 flex items-end sm:items-center justify-center p-4 animate-fade-in">
+        <div className="fixed h-screen inset-0 bg-black/50 z-50 flex items-end sm:items-center justify-center p-4 animate-fade-in">
           <div className="bg-white rounded-t-3xl sm:rounded-3xl w-full sm:max-w-md max-h-[80vh] overflow-y-auto animate-slide-up">
             <div className="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between rounded-t-3xl">
               <h3 className="text-lg font-bold text-gray-900">
