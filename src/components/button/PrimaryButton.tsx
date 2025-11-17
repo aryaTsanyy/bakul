@@ -208,7 +208,7 @@ const CircleExpandButton: React.FC<CircleExpandButtonProps> = ({
         }}
       />
 
-      <div className="relative z-10 flex items-center gap-4 w-full">
+      <div className="relative z-10 flex items-center gap-1 sm:gap-4 w-full">
         <div
           className="relative font-geist-mono font-semibold line-clamp-1 text-[16px] uppercase"
           style={{
@@ -218,7 +218,7 @@ const CircleExpandButton: React.FC<CircleExpandButtonProps> = ({
         >
           <span
             ref={textDefaultRef}
-            className="block font-geist-mono font-semibold text-[16px] tracking-[-2%] text-white"
+            className="block font-geist-mono font-semibold text-[12px] sm:text-[16px] tracking-[-2%] text-white"
             style={{
               transformStyle: "preserve-3d",
               backfaceVisibility: "hidden",
@@ -229,7 +229,7 @@ const CircleExpandButton: React.FC<CircleExpandButtonProps> = ({
 
           <span
             ref={textHoverRef}
-            className="absolute font-geist-mono font-semibold text-[16px] tracking-[-2%] inset-0 text-black opacity-0"
+            className="absolute font-geist-mono font-semibold text-[12px] sm:text-[16px] tracking-[-2%] inset-0 text-black opacity-0"
             style={{
               transformStyle: "preserve-3d",
               backfaceVisibility: "hidden",
@@ -242,7 +242,7 @@ const CircleExpandButton: React.FC<CircleExpandButtonProps> = ({
 
         <div
           ref={iconContainerRef}
-          className="relative ml-auto bg-white rounded-full p-2.5"
+          className="relative ml-auto bg-white rounded-full p-1 sm:p-2.5"
           style={{
             perspective: "1000px",
             transformStyle: "preserve-3d",
@@ -256,7 +256,7 @@ const CircleExpandButton: React.FC<CircleExpandButtonProps> = ({
             height="16"
             viewBox="0 0 16 16"
             fill="none"
-            className="block"
+            className="block w-2 h-2 sm:w-4 sm:h-4"
             style={{
               transformStyle: "preserve-3d",
               backfaceVisibility: "hidden",

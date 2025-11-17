@@ -66,11 +66,11 @@ const GallerySection: React.FC<GallerySectionProps> = ({
         {/* Title with reveal animation */}
         <div className="text-center">
           <h2
-            className={`font-anton text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 tracking-tight transition-all duration-1000 ${
+            className={`font-anton text-4xl sm:text-5xl lg:text-6xl font-normal text-[#081f36] transition-all duration-1000 ${
               inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
             }`}
             style={{
-              letterSpacing: "0.05em",
+              letterSpacing: "-2%",
             }}
           >
             {title}

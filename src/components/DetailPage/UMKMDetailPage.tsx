@@ -14,7 +14,7 @@ interface UMKMDetailPageProps {
 
 const UMKMDetailPage: React.FC<UMKMDetailPageProps> = ({ umkm }) => {
   return (
-    <div className="h-full bg-gray-50">
+    <div className="w-full h-full bg-gray-50">
       <OverviewSection umkm={umkm} />
       <StorySection umkm={umkm} />
       <GallerySection photos={umkm.photos} title="LIHAT, KENALI, DUKUNG" />
@@ -43,7 +43,9 @@ const UMKMDetailPage: React.FC<UMKMDetailPageProps> = ({ umkm }) => {
       {/* Map Section */}
       <div className="bg-white mt-8 mb-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Lokasi</h2>
+          <h2 className="text-2xl md:text-6xl font-anton font-normal tracking-[-2%] text-[#081F36] mb-6">
+            Temukan Kami di Peta
+          </h2>
           <div className="aspect-video rounded-2xl overflow-hidden bg-gray-100">
             <iframe
               src={`https://www.google.com/maps?q=${umkm.location.lat},${umkm.location.lng}&hl=id&z=15&output=embed`}

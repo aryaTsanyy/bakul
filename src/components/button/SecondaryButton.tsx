@@ -198,7 +198,7 @@ const SecondaryButton: React.FC<SecondaryButtonProps> = ({
   const commonProps = {
     ref: buttonRef,
     onClick: onClick,
-    className: `relative overflow-hidden w-full flex items-center gap-4 bg-[#2A9DF4] border-2 border-[#2A9DF4] hover:border-gray-900 rounded-full pr-2 pl-4 py-2 cursor-pointer transition-colors duration-300 ${className}`,
+    className: `relative overflow-hidden w-full flex items-center gap-2 sm:gap-4 bg-[#2A9DF4] border-2 border-[#2A9DF4] hover:border-gray-900 rounded-full pr-1 pl-2 py-2 sm:pr-2 sm:pl-4 sm:py-2 cursor-pointer transition-colors duration-300 ${className}`,
     style: { perspective: "1000px" },
   };
 
@@ -228,7 +228,7 @@ const SecondaryButton: React.FC<SecondaryButtonProps> = ({
           {/* 6. Ganti teks hardcoded dengan 'children' */}
           <span
             ref={textDefaultRef}
-            className="block font-geist-mono font-semibold text-[16px] tracking-[-2%] text-white"
+            className="block font-geist-mono font-semibold text-[12px] sm:text-[16px] tracking-[-2%] text-white"
             style={{
               transformStyle: "preserve-3d",
               backfaceVisibility: "hidden",
@@ -240,7 +240,7 @@ const SecondaryButton: React.FC<SecondaryButtonProps> = ({
           {/* 7. Ganti teks hardcoded dengan 'children' */}
           <span
             ref={textHoverRef}
-            className="absolute font-geist-mono font-semibold text-[16px] tracking-[-2%] inset-0 text-black opacity-0"
+            className="absolute font-geist-mono font-semibold text-[12px] sm:text-[16px] tracking-[-2%] inset-0 text-black opacity-0"
             style={{
               transformStyle: "preserve-3d",
               backfaceVisibility: "hidden",
@@ -254,7 +254,7 @@ const SecondaryButton: React.FC<SecondaryButtonProps> = ({
         {/* Ikon panah (tetap sama) */}
         <div
           ref={iconContainerRef}
-          className="relative ml-auto bg-white rounded-full p-2.5"
+          className="relative ml-auto bg-white rounded-full p-1 sm:p-2.5"
           style={{
             perspective: "1000px",
             transformStyle: "preserve-3d",
@@ -268,7 +268,7 @@ const SecondaryButton: React.FC<SecondaryButtonProps> = ({
             height="16"
             viewBox="0 0 16 16"
             fill="none"
-            className="block"
+            className="block w-2 h-2 sm:h-4 sm:w-4"
             style={{
               transformStyle: "preserve-3d",
               backfaceVisibility: "hidden",
@@ -286,7 +286,7 @@ const SecondaryButton: React.FC<SecondaryButtonProps> = ({
             height="16"
             viewBox="0 0 16 16"
             fill="none"
-            className="absolute inset-0 m-auto opacity-0"
+            className="absolute inset-0 m-auto w-2 h-2 sm:h-4 sm:w-4 opacity-0"
             style={{
               transformStyle: "preserve-3d",
               backfaceVisibility: "hidden",

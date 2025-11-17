@@ -36,7 +36,7 @@ const TestimonialSection = () => {
               [ TESTIMONI ]
             </span>
           </div>
-          <h2 className="text-5xl font-anton font-normal tracking-[-2%] md:text-5xl text-[#161D04]">
+          <h2 className="text-4xl font-anton uppercase font-normal tracking-[-2%] md:text-5xl text-[#161D04]">
             Apa Kata Mereka?
           </h2>
         </div>
@@ -107,7 +107,7 @@ const TestimonialSection = () => {
 
             {/* Feedback text with fixed height */}
             <div className="mb-8 min-h-[120px] flex items-center">
-              <p className="text-xl font-anton md:text-3xl text-[#081F36] font-normal leading-[150%] text-center">
+              <p className="text-[16px] font-anton md:text-3xl text-[#081F36] font-normal leading-[150%] text-center">
                 {displayedText}
                 {isTyping && (
                   <span className="inline-block w-1 h-6 bg-[#2A9DF4] ml-1 animate-blink"></span>
@@ -118,11 +118,11 @@ const TestimonialSection = () => {
             {/* Owner info */}
             <div className="flex items-center justify-center gap-4 border-t border-slate-200 pt-6">
               <div className="transition-all flex items-center gap-3 justify-center duration-500">
-                <h4 className="text-lg font-geist-mono font-medium text-[#19395F]">
+                <h4 className="text-[12px] sm:text-lg font-geist-mono font-medium text-[#19395F]">
                   {testimonialList[activeIndex].name}
                 </h4>
                 <div className="w-1 h-1 items-center bg-[#2A9DF4] rounded-full"></div>
-                <p className="text-lg text-[#19395F] font-geist-mono font-medium">
+                <p className="text-[12px] sm:text-lg text-[#19395F] font-geist-mono font-medium">
                   {testimonialList[activeIndex].business}
                 </p>
               </div>

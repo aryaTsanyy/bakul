@@ -4,10 +4,10 @@ import CircleExpandButton from "@/components/button/PrimaryButton";
 
 const HeroSection = () => {
   return (
-    <div className="w-full h-screen sm:h-full px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 mb-0 lg:mb-28">
+    <div className="w-full h-full sm:h-full px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24 mb-0 lg:mb-28">
       <div className="top-section w-full min-h-0 md:min-h-[45vh] mt-2 sm:mt-10 md:mt-12 lg:mt-14 flex flex-col items-center justify-center gap-6 sm:gap-8">
         <div className="top-content w-full flex flex-col px-4 sm:px-4 md:px-16 lg:px-16 xl:px-32 pt-0 sm:pt-0 md:pt-0 lg:pt-36 items-center gap-3 sm:gap-4">
-          <h2 className="uppercase text-[#081F36] font-anton font-normal tracking-[-2%] text-center text-[18px] sm:text-3xl md:text-4xl lg:text-5xl xl:text-[52px] leading-[120%]">
+          <h2 className="uppercase text-[#081F36] font-anton font-normal tracking-[-2%] text-center text-[24px] sm:text-3xl md:text-4xl lg:text-5xl xl:text-[52px] leading-[120%]">
             Temukan & Dukung UMKM Lokal di Sekitarmu Jelajahi berbagai usaha
             kecil yang tumbuh di daerahmu
           </h2>
@@ -20,7 +20,7 @@ const HeroSection = () => {
         <div className="bot-content w-full flex items-center justify-center flex-col sm:flex-row gap-3 sm:gap-2 sm:w-auto px-2 sm:px-0">
           <CircleExpandButton
             href="/directory"
-            className="max-w-52 sm:max-w-xs md:max-w-md"
+            className="max-w-[160px] sm:max-w-xs md:max-w-md"
           />
         </div>
       </div>

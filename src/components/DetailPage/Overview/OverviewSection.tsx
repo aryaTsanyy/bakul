@@ -13,17 +13,14 @@ const OverviewSection: React.FC<UMKMDetailPageProps> = ({ umkm }) => {
   useState(isImageHovered);
   return (
     <section className="bg-transparent min-h-screen flex items-center justify-center w-full h-full">
-      <div className="w-full h-full mx-auto px-10 sm:px-20 lg:px-24 py-12 sm:py-16">
+      <div className="w-full h-full mx-auto px-4 sm:px-20 lg:px-24 py-0 sm:py-16">
         <div className="w-full h-full grid grid-cols-1 lg:grid-cols-4 gap-12 lg:gap-24 items-start">
           {/* Info Section */}
-          <div className="space-y-6 flex flex-col items-start justify-evenly gap-5 h-full lg:col-span-2">
+          <div className="space-y-3 sm:space-y-6 mt-4 sm:mt-0 flex flex-col items-start justify-evenly gap-1 sm:gap-5 h-full lg:col-span-2">
             {/* Category Badge */}
-            <div className=" lex items-center gap-4">
+            <div className="flex items-center">
               <span className="px-4 py-2 font-geist-mono bg-gray-100 text-gray-800 text-sm font-semibold rounded-full uppercase tracking-wide">
                 {umkm.categories[0]}
-              </span>
-              <span className="px-4 py-2 font-geist-mono bg-gray-100 text-gray-800 text-sm font-semibold rounded-full uppercase tracking-wide">
-                {umkm.categories[1]}
               </span>
             </div>
             <div className="w-full flex flex-col items-start justify-between gap-2">
@@ -35,7 +32,7 @@ const OverviewSection: React.FC<UMKMDetailPageProps> = ({ umkm }) => {
               </div>
               {/* Description */}
               <div className="prose prose-gray max-w-none">
-                <p className="text-base font-inter sm:text-lg text-[#515151] leading-[150%] tracking-[-2%]">
+                <p className="text-[12px] font-inter sm:text-lg text-[#515151] leading-[150%] tracking-[-2%]">
                   {umkm.tagline}
                 </p>
               </div>
@@ -51,31 +48,31 @@ const OverviewSection: React.FC<UMKMDetailPageProps> = ({ umkm }) => {
               </div>
             </div>
             {/* Contact Info */}
-            <div className="grid grid-cols-3 bg-secondary-blue p-3 rounded-2xl sm:p-4 md:p-5 gap-4 pt-6">
+            <div className="grid grid-cols-3 w-full sm:w-auto sm:h-auto h-full items-center bg-secondary-blue p-1 rounded-2xl sm:p-4 md:p-5 gap-4 pt-2 pb-2 sm:pb-0 sm:pt-6">
               {/* Phone */}
-              <div className="text-white rounded-2xl p-4 text-center">
-                <p className="text-xs font-semibold uppercase mb-2 opacity-90">
+              <div className="text-white rounded-2xl p-1 sm:p-4 text-center">
+                <p className="text-[8px] lg:text-xs font-semibold uppercase mb-2 opacity-90">
                   Nomor Telepon
                 </p>
-                <p className="font-bold text-sm sm:text-base break-all">
+                <p className="font-bold text-[10px] lg:text-base break-all">
                   {umkm.phone || "-"}
                 </p>
               </div>
               {/* Operating Hours */}
-              <div className="text-white rounded-2xl p-4 text-center">
-                <p className="text-xs font-semibold uppercase mb-2 opacity-90">
+              <div className="text-white rounded-2xl p-1 sm:p-4 text-center">
+                <p className="text-[8px] lg:text-xs font-semibold uppercase mb-2 opacity-90">
                   Jam Operasional
                 </p>
-                <p className="font-bold text-sm sm:text-base">
+                <p className="font-bold text-[10px] lg:text-base">
                   {umkm.operatingHours}
                 </p>
               </div>
               {/* Social Media */}
-              <div className="text-white rounded-2xl p-4 text-center">
-                <p className="text-xs font-semibold uppercase mb-2 opacity-90">
+              <div className="text-white rounded-2xl p-1 sm:p-4 text-center">
+                <p className="text-[8px] lg:text-xs font-semibold uppercase mb-2 opacity-90">
                   Social Media
                 </p>
-                <p className="font-bold text-sm sm:text-base break-all">
+                <p className="font-bold text-[10px] lg:text-base break-all">
                   {umkm.instagram || "-"}
                 </p>
               </div>
@@ -84,7 +81,7 @@ const OverviewSection: React.FC<UMKMDetailPageProps> = ({ umkm }) => {
           {/* Right Column - Single Image with Iconic Animation */}
           <div className="relative w-full lg:sticky lg:col-span-2 lg:top-24">
             <div
-              className="relative w-[700px] h-[600px] rounded-3xl overflow-hidden bg-gray-100 group cursor-pointer"
+              className="relative w-full h-full sm:w-[500px] sm:h-[500px] lg:w-[700px] lg:h-[600px] rounded-3xl overflow-hidden bg-gray-100 group cursor-pointer"
               onMouseEnter={() => setIsImageHovered(true)}
               onMouseLeave={() => setIsImageHovered(false)}
             >

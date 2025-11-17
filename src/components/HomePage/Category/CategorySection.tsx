@@ -150,10 +150,10 @@ const CategorySection = () => {
             </p>
             <div className="flex flex-col lg:flex-row w-full items-start justify-between gap-6 lg:gap-8">
               <div className="flex flex-col items-start gap-3 sm:gap-4 lg:gap-4.5 flex-1">
-                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl dark-text font-anton font-black leading-tight">
+                <h1 className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl dark-text font-anton font-normal leading-tight">
                   SETIAP KATEGORI, PUNYA CERITA SENDIRI
                 </h1>
-                <p className="text-[#515151] font-inter text-sm sm:text-base lg:text-lg max-w-2xl">
+                <p className="text-[#515151] font-inter text-[12px] sm:text-base lg:text-lg max-w-2xl">
                   Pilih kategori yang paling menarik bagimu, dan temukan cerita
                   perjuangan di balik produk lokal yang mereka ciptakan
                 </p>
@@ -161,7 +161,7 @@ const CategorySection = () => {
               <div className="w-full lg:w-auto flex items-start lg:items-end">
                 <CircleExpandButton
                   href="/directory"
-                  className="max-w-52 md:max-w-md"
+                  className="max-w-[160px] md:max-w-md"
                 />
               </div>
             </div>

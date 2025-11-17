@@ -26,10 +26,10 @@ const MapSection = () => {
         </p>
         <div className="w-full h-full flex flex-col md:flex-row items-center md:items-start justify-between">
           <div className="flex flex-col items-center md:items-start left-section gap-5 mb-5 md:mb-0">
-            <h3 className="font-anton font-normal text-3xl sm:text-2xl md:text-3xl lg:text-4xl text-center md:text-start text-[#161D04] tracking-[-2%]">
+            <h3 className="font-anton font-normal uppercase text-3xl sm:text-2xl md:text-3xl lg:text-4xl text-center md:text-start text-[#081f36] tracking-[-2%]">
               Temukan UMKM di Sekitarmu
             </h3>
-            <p className="font-inter text-[#515151] text-sm md:text-xl text-center md:text-start font-medium tracking-[-2%] max-w-8/12 leading-[150%]">
+            <p className="font-inter text-[#515151] text-[12px] md:text-xl text-center md:text-start font-medium tracking-[-2%] max-w-8/12 leading-[150%]">
               Lihat peta interaktif berisi berbagai UMKM di sekitarmu. Temukan
               lokasi usaha dan dukung bisnis lokal dengan mudah.
             </p>

@@ -783,11 +783,11 @@ export default function DomeGallery({
     
     @media (max-width: 640px) {
       .stage {
-        transform: scale(0.35);
+        transform: scale(0.45);
       }
       .sphere-root {
         --viewer-pad: 20px;
-        height: 40vh !important;
+        height: 50vh !important;
         min-height: 200px;
       }
     }

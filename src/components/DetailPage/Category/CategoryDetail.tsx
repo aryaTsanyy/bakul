@@ -18,7 +18,7 @@ const CategoryDetail = () => {
       {/* Content */}
       <div className="relative max-w-5xl mx-auto text-center">
         {/* Icon */}
-        <div className="flex justify-center mb-6">
+        <div className="flex justify-center mb-12">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="40"
@@ -41,9 +41,9 @@ const CategoryDetail = () => {
         </div>
 
         {/* Heading */}
-        <h2 className="text-3xl md:text-4xl lg:text-3xl font-bold text-white mb-6 leading-tight">
-          Temukan berbagai UMKM lokal yang siap kamu kunjungi, dukung, dan
-          jadikan bagian dari keseharianmu!
+        <h2 className="font-anton text-3xl md:text-4xl lg:text-3xl text-center font-normal text-white mb-6 px-2 md:px-20 leading-tight">
+          Temukan berbagai UMKM lokal yang siap kamu kunjungi, <br /> dukung,
+          dan jadikan bagian dari keseharianmu!
         </h2>
 
         {/* CTA Button */}

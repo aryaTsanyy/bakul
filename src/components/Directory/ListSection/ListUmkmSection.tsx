@@ -136,7 +136,7 @@ const UMKMPage = () => {
     <div className="min-h-screen w-full bg-transparent">
       {/* Search Bar */}
       <div className="max-w-2xl w-full mx-auto px-4">
-        <div className="flex items-center justify-center w-full px-4">
+        <div className="flex flex-col items-center justify-center w-full px-4">
           <div
             className={`relative group flex items-center justify-center transition-all duration-500 ease-out ${
               isFocused
@@ -187,11 +187,6 @@ const UMKMPage = () => {
               </button>
             )}
           </div>
-          {querySearch && (
-            <div className="mt-3 text-sm text-[#13569C] font-medium text-center">
-              Hasil pencarian dari navbar
-            </div>
-          )}
         </div>
       </div>
       {/* Content Section */}
