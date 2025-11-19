@@ -21,7 +21,6 @@ const geistMono = Geist_Mono({
 });
 
 export default function DetailPage({ umkm }: DetailPageProps) {
-  // Jika UMKM tidak ditemukan
   if (!umkm) {
     return (
       <div
@@ -76,43 +75,34 @@ export default function DetailPage({ umkm }: DetailPageProps) {
     );
   }
 
-  // Render halaman detail UMKM
   return <UMKMDetailPage umkm={umkm} />;
 }
 
-// Generate static paths untuk semua UMKM slugs
 export const getStaticPaths: GetStaticPaths = async () => {
-  // Generate path untuk setiap UMKM berdasarkan slug
   const paths = umkmList.map((umkm) => ({
     params: { slug: umkm.slug },
   }));
 
   return {
     paths,
-    // fallback: false = 404 jika slug tidak ada di paths
-    // fallback: 'blocking' = generate page on-demand jika slug baru
     fallback: "blocking",
   };
 };
 
-// Fetch data UMKM berdasarkan slug
+// Fetch data UMKM
 export const getStaticProps: GetStaticProps<DetailPageProps> = async ({
   params,
 }) => {
-  // Get slug from params
   const slug = params?.slug as string;
 
-  // Find UMKM by slug
   const umkm = umkmList.find((item) => item.slug === slug);
 
-  // Jika UMKM tidak ditemukan, return 404
   if (!umkm) {
     return {
       notFound: true,
     };
   }
 
-  // Return UMKM data as props
   return {
     props: {
       umkm,

@@ -25,9 +25,9 @@ Anda dapat melihat versi _live_ dari project ini di:
 
 Berikut adalah beberapa tampilan dari aplikasi "Bakul".
 
-|                  Halaman Utama (Homepage)                  |                       Halaman Direktori                        |                      Halaman Detail                      |
-| :--------------------------------------------------------: | :------------------------------------------------------------: | :------------------------------------------------------: |
-| ![Tampilan Halaman Utama Bakul](/Screenshots/HomePage.png) | ![Tampilan Halaman Direktori UMKM](/Screenshots/Directory.png) | ![Tampilan Halaman Detail UMKM](/Screenshots/Detail.png) |
+|                     Halaman Utama (Homepage)                     |                          Halaman Direktori                          |                          Halaman Detail                          |
+| :--------------------------------------------------------------: | :-----------------------------------------------------------------: | :--------------------------------------------------------------: |
+| ![Tampilan Halaman Utama Bakul](public/Screenshots/HomePage.png) | ![Tampilan Halaman Direktori UMKM](public/Screenshots/HomePage.png) | ![Tampilan Halaman Detail UMKM](public/Screenshots/HomePage.png) |
 
 ---
 

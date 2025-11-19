@@ -9,6 +9,7 @@ import { Search, X } from "lucide-react";
 import { useRouter } from "next/router";
 import { umkmList } from "@/data/umkmList";
 import type { Category } from "@/pages/api/umkm";
+import ScrollSmoother from "gsap/dist/ScrollSmoother";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -129,6 +130,20 @@ const UMKMPage = () => {
     setSearchDefault("");
     router.push("/directory", undefined, { shallow: true });
   };
+  useEffect(() => {
+    const smoother = ScrollSmoother.get();
+
+    if (smoother) {
+      if (showFilterModal) {
+        smoother.paused(true);
+      } else {
+        smoother.paused(false);
+      }
+    }
+    return () => {
+      if (smoother) smoother.paused(false);
+    };
+  }, [showFilterModal]);
 
   const hasMoreData = displayedCount < filteredData.length;
 
@@ -393,7 +408,7 @@ const UMKMPage = () => {
 
       {showFilterModal && (
         <div className="fixed h-screen inset-0 bg-black/50 z-50 flex items-end sm:items-center justify-center p-4 animate-fade-in">
-          <div className="bg-white rounded-t-3xl sm:rounded-3xl w-full sm:max-w-md max-h-[80vh] overflow-y-auto animate-slide-up">
+          <div className="bg-white rounded-t-3xl sm:rounded-3xl w-full sm:max-w-md max-h-[80vh] overflow-y-none animate-slide-up">
             <div className="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between rounded-t-3xl">
               <h3 className="text-lg font-bold text-gray-900">
                 Filter Kategori
