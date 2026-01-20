@@ -361,8 +361,8 @@ const Footer: React.FC<FooterProps> = ({
                             style={{ width: "200%" }}
                           >
                             <span>
-                              {link.label} * {link.label} * {link.label} *{" "}
-                              {link.label} * {link.label} * {link.label} *{" "}
+                              {link.label} * {link.label} * {link.label}
+                              {link.label} * {link.label} * {link.label}
                             </span>
                           </motion.div>
                         )}

@@ -107,7 +107,6 @@ export const getStaticProps: GetStaticProps<DetailPageProps> = async ({
     props: {
       umkm,
     },
-    // ISR: Revalidate setiap 60 detik (optional)
     revalidate: 60,
   };
 };
